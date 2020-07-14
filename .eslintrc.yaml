@@ -1,0 +1,1081 @@
+---
+
+parser: "@typescript-eslint/parser"
+extends:
+    - eslint:recommended
+    - plugin:import/errors
+    - plugin:import/warnings
+    - plugin:import/typescript
+
+parserOptions:
+    ecmaVersion: 2018
+    sourceType: module
+    createDefaultProgram: true
+    ecmaFeatures:
+        modules: true
+        jsx: true
+    project: "./tsconfig.json"
+
+env:
+    browser: true
+    jest: true
+    node: true
+    es6: true
+
+globals:
+    renderHook: true
+    renderWrapperHook: true
+
+plugins:
+    - react
+    - import
+    - "react-hooks"
+    - "@typescript-eslint"
+
+rules:
+    no-control-regex:
+        - off
+    unicode-bom:
+        - error
+
+    max-len:
+        - error
+        -   code: 120
+            ignoreUrls: true
+            ignoreRegExpLiterals: true
+
+    space-infix-ops:
+        - error
+
+    space-unary-ops:
+        - error
+
+    space-before-blocks:
+        - error
+        - always
+
+    keyword-spacing:
+        - error
+        -   before: true
+            after: true
+
+    key-spacing:
+        - error
+        -   beforeColon: false
+            afterColon: true
+
+    space-before-function-paren:
+        - error
+        -   anonymous: always
+            named: never
+
+    semi-spacing:
+        - error
+        -   before: false
+            after: true
+
+    comma-spacing:
+        - error
+        -   before: false
+            after: true
+
+    space-in-parens:
+        - error
+        - never
+
+    array-bracket-spacing:
+        - error
+        - never
+
+    computed-property-spacing:
+        - error
+        - never
+
+    no-spaced-func: 2
+
+    generator-star-spacing:
+        - error
+        -   before: false
+            after: true
+
+    object-curly-spacing:
+        - error
+        - never
+
+    template-curly-spacing:
+        - error
+        - never
+
+    max-statements-per-line:
+        - error
+        -   max: 1
+
+    operator-linebreak:
+        - error
+        - before
+
+    comma-style:
+        - error
+        - last
+
+    semi-style:
+        - error
+        - last
+
+    brace-style:
+        - error
+        - 1tbs
+
+    arrow-parens:
+        - 2
+        - as-needed
+
+    no-var:
+        - 2
+
+    no-undef-init: 2
+
+    one-var:
+        - 2
+        - never
+
+    radix: 2
+
+    no-multi-str: 1
+
+    dot-notation:
+        - 2
+        -   allowKeywords: true
+            allowPattern: "^catch$"
+
+    guard-for-in: 1
+
+    max-statements:
+        - warn
+        - 50
+
+    eol-last:
+        - error
+        - always
+
+    no-multiple-empty-lines:
+        - error
+        -   max: 2
+            maxEOF: 1
+            maxBOF: 0
+
+    no-trailing-spaces:
+        - error
+        -   skipBlankLines: false
+            ignoreComments: false
+
+    no-constant-condition: 1
+
+    comma-dangle: 2
+
+    no-debugger: 2
+
+    no-dupe-keys: 1
+
+    no-empty-character-class: 2
+
+    no-ex-assign: 2
+
+    no-extra-boolean-cast: 1
+
+    no-func-assign: 1
+
+    no-inner-declarations: 1
+
+    no-invalid-regexp: 2
+
+    no-negated-in-lhs: 2
+
+    no-obj-calls: 2
+
+    no-sparse-arrays: 2
+
+    no-unreachable: 2
+
+    use-isnan: 2
+
+    valid-typeof: 2
+
+    curly:
+        - 2
+        - all
+
+    eqeqeq:
+        - 2
+        - allow-null
+
+    no-else-return: 1
+
+    no-labels:
+        - 1
+        -   allowLoop: true
+
+    no-extend-native: 2
+
+    no-extra-bind: 1
+
+    no-implied-eval: 1
+
+    no-iterator: 2
+    no-irregular-whitespace: 1
+
+    no-lone-blocks: 1
+
+    no-loop-func: 1
+
+    no-native-reassign: 2
+
+    no-new-wrappers: 2
+
+    no-octal: 1
+
+    no-octal-escape: 1
+
+    no-proto: 2
+
+    no-redeclare: 1
+
+    no-self-compare: 2
+
+    no-unneeded-ternary: 2
+
+    no-with: 1
+
+    wrap-iife:
+        - 2
+        - any
+
+    no-delete-var: 1
+
+    no-dupe-args: 2
+
+    no-duplicate-case: 2
+
+    no-label-var: 1
+
+    no-shadow-restricted-names: 2
+
+    no-undef: 2
+
+
+
+
+    new-parens: 1
+
+    no-multi-spaces:
+        - 2
+        -   exceptions:
+                Property: true
+                BinaryExpression: true
+                VariableDeclarator: true
+
+    no-new-object: 2
+
+
+
+
+    no-mixed-spaces-and-tabs: 2
+
+    quotes:
+        - 2
+        - single
+
+    spaced-comment:
+        - 2
+        - always
+        -   exceptions:
+                - "-"
+                - "+"
+                - "\""
+            block:
+                balanced: true
+
+    max-nested-callbacks:
+        - 1
+        - 3
+
+    max-depth:
+        - 1
+        - 6
+
+    max-params:
+        - 1
+        - 6
+
+    arrow-spacing: 2
+    constructor-super: 2
+
+    no-confusing-arrow:
+        - 2
+        -   allowParens: true
+
+    no-class-assign: 1
+
+    no-const-assign: 2
+
+    no-dupe-class-members: 1
+
+    no-this-before-super: 1
+
+    no-duplicate-imports: 1
+
+    prefer-rest-params: 2
+    #
+
+
+
+
+
+
+
+
+
+
+
+
+    #
+
+
+
+
+
+
+
+
+    #
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    #
+
+
+
+    react/display-name: 0
+
+    react/button-has-type: 2
+
+    react/destructuring-assignment: 2
+
+    react/no-access-state-in-setstate: 1
+
+    react/no-redundant-should-component-update: 2
+
+    react/no-this-in-sfc: 2
+
+    react/no-unsafe: 2
+
+    react/forbid-component-props: 0
+
+    react/forbid-elements: 0
+
+    react/forbid-foreign-prop-types: 2
+
+    react/forbid-prop-types: 1
+
+    react/jsx-boolean-value:
+        - 2
+        - never
+
+
+    react/jsx-closing-bracket-location:
+        - 2
+        - line-aligned
+
+    react/jsx-curly-spacing:
+        - 2
+        - never
+
+    react/jsx-equals-spacing:
+        - 2
+        - never
+
+    react/jsx-filename-extension:
+        - 2
+        -   extensions:
+                - ".jsx"
+                - ".tsx"
+
+    react/jsx-first-prop-new-line:
+        - 2
+        - multiline-multiprop
+
+
+    react/jsx-handler-names:
+        - 1
+        -   eventHandlerPrefix: "handle"
+            eventHandlerPropPrefix: 'on'
+
+    react/jsx-indent-props:
+        - 2
+        - 4
+
+    react/jsx-indent:
+        - 2
+        - 4
+
+    react/jsx-key: 2
+
+    react/jsx-max-props-per-line:
+        - 2
+        -   when: multiline
+
+    react/jsx-no-bind:
+        - 2
+        -   ignoreRefs: false
+            allowArrowFunctions: false
+            allowBind: false
+
+    react/jsx-no-comment-textnodes: 1
+
+    react/jsx-no-duplicate-props:
+        - 2
+        -   ignoreCase: true
+
+    react/jsx-no-literals: 0
+
+    react/jsx-no-target-blank:
+        - 1
+        -   enforceDynamicLinks: always
+
+    react/jsx-no-undef: 2
+
+    react/jsx-pascal-case:
+        - 2
+        -   allowAllCaps: true
+
+    react/jsx-sort-props: 0
+
+    react/jsx-tag-spacing:
+        - 2
+        -   closingSlash: never
+            beforeSelfClosing: always
+            afterOpening: never
+
+    react/jsx-uses-react: 0
+
+    react/jsx-uses-vars: 2
+
+    react/jsx-wrap-multilines:
+        - 2
+        -   declaration: true
+            assignment: true
+            return: true
+            arrow: true
+            prop: true
+
+    react/jsx-max-depth:
+        - 1
+        -   max: 3
+
+    react/jsx-fragments:
+        - 2
+        - element
+
+    react/no-array-index-key: 2
+
+    react/no-children-prop: 1
+
+    react/no-danger-with-children: 2
+
+    react/no-danger: 1
+
+    react/no-deprecated: 2
+
+    react/no-did-mount-set-state: 2
+
+    react/no-did-update-set-state: 2
+
+    react/no-will-update-set-state: 2
+
+    react/no-direct-mutation-state: 2
+
+    react/no-find-dom-node: 2
+
+    react/no-is-mounted: 2
+
+    react/no-multi-comp:
+        - 0
+        -   ignoreStateless: true
+
+    react/no-render-return-value: 2
+
+    react/no-set-state: 0
+
+    react/no-string-refs: 2
+
+    react/no-unescaped-entities: 1
+
+    react/no-unknown-property: 2
+
+    react/no-unused-prop-types: 0
+
+    react/prefer-es6-class:
+        - 2
+        - always
+
+    react/prefer-stateless-function: 2
+
+
+    react/prop-types:
+        - error
+        -   ignore:
+                - children
+
+
+    react/react-in-jsx-scope: 2
+
+
+    react/require-default-props: 2
+
+
+    react/require-optimization: 1
+
+
+    react/require-render-return: 2
+
+
+    react/self-closing-comp:
+        - 2
+        -   component: true
+            html: true
+
+
+    react/sort-comp:
+        - 1
+        -   order:
+                - static-properties
+                - static-methods
+                - lifecycle
+                - everything-else
+                - render
+            groups:
+                static-properties:
+                    - displayName
+                    - propTypes
+                    - contextTypes
+                    - childContextTypes
+                    - mixins
+                    - statics
+                lifecycle:
+                    - defaultProps
+                    - constructor
+                    - getDefaultProps
+                    - getInitialState
+                    - state
+                    - getChildContext
+                    - componentWillMount
+                    - componentDidMount
+                    - componentWillReceiveProps
+                    - shouldComponentUpdate
+                    - componentWillUpdate
+                    - componentDidUpdate
+                    - componentWillUnmount
+
+
+
+    "react-hooks/rules-of-hooks":
+        - error
+
+
+    "react-hooks/exhaustive-deps":
+        - 0
+
+
+    react/sort-prop-types: 0
+
+
+    react/style-prop-object: 2
+
+
+    react/void-dom-elements-no-children: 2
+
+
+    import/no-unresolved: 0
+
+
+    import/named: 2
+
+    import/default: 2
+
+
+    import/namespace: 0
+
+    import/no-restricted-paths: 0
+
+    import/no-absolute-path: 2
+
+    import/no-dynamic-require: 1
+
+    import/no-internal-modules: 0
+
+    import/no-webpack-loader-syntax: 1
+
+    import/export: 2
+
+    import/no-named-as-default: 0
+
+    import/no-named-as-default-member: 2
+
+    import/no-deprecated: 2
+
+    import/no-extraneous-dependencies: 0
+
+    import/no-mutable-exports: 0
+
+    import/unambiguous: 2
+
+    import/no-commonjs: 1
+
+    import/no-amd: 1
+
+    import/no-nodejs-modules: 0
+
+    import/first: 2
+
+    import/no-duplicates: 2
+
+
+    import/extensions:
+        - 2
+        -   ".js": never,
+            ".jsx": never,
+            ".ts": never,
+            ".tsx": never,
+            ".mjs": never
+
+    import/order: 2
+
+    sort-imports:
+        - error
+        -   ignoreDeclarationSort: true
+
+
+    import/newline-after-import: 2
+
+    import/prefer-default-export: 0
+
+    import/max-dependencies: 0
+
+    import/no-unassigned-import: 2
+
+    import/no-named-default: 2
+
+
+
+
+
+
+
+
+
+    no-eval: 2
+    no-extra-semi: 2
+    arrow-body-style:
+        - 1
+        - as-needed
+
+
+
+
+    "@typescript-eslint/adjacent-overload-signatures":
+        - error
+
+
+    "@typescript-eslint/array-type":
+        - error
+        -   default: array-simple
+            readonly: generic
+
+
+    "@typescript-eslint/await-thenable":
+        - error
+
+
+    "@typescript-eslint/ban-ts-ignore":
+        - error
+
+
+    "@typescript-eslint/ban-types":
+        - error
+        -   types:
+                String:
+                    message: 'Use string instead'
+                    fixWith: 'string'
+                Boolean:
+                    message: 'Use boolean instead'
+                    fixWith: 'boolean'
+                Number:
+                    message: 'Use number instead'
+                    fixWith: 'number'
+                Object:
+                    message: 'Use Record<string, any> instead'
+                    fixWith: 'Record<string, any>'
+                Symbol:
+                    message: 'Use symbol instead'
+                    fixWith: 'symbol'
+                object:
+                    message: 'Use Record<string, any> instead'
+                    fixWith: 'Record<string, any>'
+
+
+    camelcase:
+        - off
+
+    "@typescript-eslint/camelcase":
+        - error
+
+
+    "@typescript-eslint/class-name-casing":
+        - error
+
+
+    "@typescript-eslint/consistent-type-assertions":
+        - error
+        -   assertionStyle: as
+            objectLiteralTypeAssertions: never
+
+
+    "@typescript-eslint/consistent-type-definitions":
+        - error
+        - interface
+
+
+    "@typescript-eslint/explicit-function-return-type":
+        - error
+        -   allowExpressions: true
+            allowTypedFunctionExpressions: true
+
+
+    "@typescript-eslint/explicit-member-accessibility":
+        - error
+        -   accessibility: explicit
+            overrides:
+                constructors: no-public
+
+
+    func-call-spacing:
+        - off
+
+    "@typescript-eslint/func-call-spacing":
+        - error
+
+
+    "@typescript-eslint/generic-type-naming":
+        - error
+        - "^[A-Z]+$"
+
+
+    indent:
+        - off
+
+    "@typescript-eslint/indent":
+        - error
+        - 4
+        -   SwitchCase: 1
+
+
+    "@typescript-eslint/interface-name-prefix":
+        - off
+
+
+    "@typescript-eslint/member-delimiter-style":
+        - error
+        -   multiline:
+                delimiter: "semi"
+                requireLast: true
+            singleline:
+                delimiter: "semi"
+                requireLast: false
+
+
+
+    "@typescript-eslint/member-naming":
+        - error
+        -   private: "^[a-zA-Z]"
+            public: "^[a-zA-Z]"
+            protected: "^[a-zA-Z]"
+
+
+    "@typescript-eslint/member-ordering":
+        - error
+        -   default:
+                - public-static-field
+                - protected-static-field
+                - private-static-field
+                - public-static-method
+                - protected-static-method
+                - private-static-method
+                - public-instance-field
+                - protected-instance-field
+                - private-instance-field
+                - public-constructor
+                - protected-constructor
+                - private-constructor
+                - public-instance-method
+                - protected-instance-method
+                - private-instance-method
+
+
+    no-array-constructor:
+        - off
+
+    "@typescript-eslint/no-array-constructor":
+        - error
+
+
+    no-empty-function:
+        - off
+
+    "@typescript-eslint/no-empty-function":
+        - error
+
+
+    "@typescript-eslint/no-empty-interface":
+        - error
+
+
+    "@typescript-eslint/no-explicit-any":
+        - warn
+
+
+    no-extra-parens:
+        - off
+
+    "@typescript-eslint/no-extra-parens":
+        - error
+        - functions
+
+
+    "@typescript-eslint/no-extraneous-class":
+        - error
+        -   allowConstructorOnly: false
+            allowEmpty: false
+            allowStaticOnly: false
+
+
+    "@typescript-eslint/no-floating-promises":
+        - warn
+
+
+    "@typescript-eslint/no-for-in-array":
+        - error
+
+
+    "@typescript-eslint/no-inferrable-types":
+        - error
+        -   ignoreParameters: true
+            ignoreProperties: true
+
+
+    no-magic-numbers:
+        - off
+
+    "@typescript-eslint/no-magic-numbers":
+        - off
+
+
+    "@typescript-eslint/no-misused-new":
+        - error
+
+
+    "@typescript-eslint/no-misused-promises":
+        - error
+
+
+    "@typescript-eslint/no-namespace":
+        - error
+
+
+    "@typescript-eslint/no-non-null-assertion":
+        - error
+
+
+    "@typescript-eslint/no-parameter-properties":
+        - error
+
+
+    "@typescript-eslint/no-require-imports":
+        - error
+
+
+    "@typescript-eslint/no-this-alias":
+        - off
+        -   allowDestructuring: true
+
+
+    "@typescript-eslint/no-type-alias":
+        - off
+
+
+    "@typescript-eslint/no-unnecessary-qualifier":
+        - error
+
+
+    "@typescript-eslint/no-unnecessary-type-arguments":
+        - off
+
+
+    "@typescript-eslint/no-unnecessary-type-assertion":
+        - error
+
+
+    no-unused-vars:
+        - off
+
+    "@typescript-eslint/no-unused-vars":
+        - error
+        -   vars: all
+            args: none
+            varsIgnorePattern: ^React$
+
+
+    no-use-before-define:
+        - off
+
+    "@typescript-eslint/no-use-before-define":
+        - error
+        - nofunc
+
+
+    no-useless-constructor:
+        - off
+
+    "@typescript-eslint/no-useless-constructor":
+        - error
+
+
+    "@typescript-eslint/no-var-requires":
+        - off
+
+
+    "@typescript-eslint/prefer-for-of":
+        - error
+
+
+    "@typescript-eslint/prefer-function-type":
+        - error
+
+
+    "@typescript-eslint/prefer-includes":
+        - off
+
+
+    "@typescript-eslint/prefer-namespace-keyword":
+        - off
+
+
+    "@typescript-eslint/prefer-readonly":
+        - warn
+
+
+    "@typescript-eslint/prefer-regexp-exec":
+        - off
+
+
+    "@typescript-eslint/promise-function-async":
+        - off
+
+
+
+
+    #
+
+
+
+
+
+
+    "@typescript-eslint/require-array-sort-compare":
+        - off
+
+
+    require-await:
+        - off
+
+    "@typescript-eslint/require-await":
+        - off
+
+
+    "@typescript-eslint/restrict-plus-operands":
+        - off
+
+
+    semi:
+        - off
+    "@typescript-eslint/semi":
+        - 2
+        - always
+
+
+    "@typescript-eslint/strict-boolean-expressions":
+        - off
+
+
+    "@typescript-eslint/triple-slash-reference":
+        - error
+        -   path: never
+            types: never
+            lib: never
+
+
+    "@typescript-eslint/type-annotation-spacing":
+        - error
+
+
+    "@typescript-eslint/typedef":
+        - error
+        -   arrowParameter: false
+
+
+    "@typescript-eslint/unbound-method":
+        - off
+
+    "@typescript-eslint/unified-signatures":
+        - error
+
+

@@ -1,0 +1,8 @@
+{
+    "type": "remote",
+    "method": "post",
+    "url": "/foo",
+    "cacheable": false,
+    "encode": "json",
+    "params": null
+}

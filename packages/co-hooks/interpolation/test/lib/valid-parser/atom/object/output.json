@@ -1,0 +1,42 @@
+{
+    "type": "object",
+    "properties": [
+        {
+            "type": "object_property",
+            "key": {
+                "type": "symbol",
+                "raw": "x",
+                "value": "x"
+            },
+            "value": {
+                "type": "literal",
+                "literal": "num",
+                "raw": "4",
+                "value": 4
+            }
+        },
+        {
+            "type": "object_property",
+            "key": {
+                "type": "literal",
+                "literal": "string",
+                "raw": "\"y\"",
+                "value": "y"
+            },
+            "value": {
+                "type": "binary",
+                "op": "-",
+                "left": {
+                    "type": "symbol",
+                    "raw": "a",
+                    "value": "a"
+                },
+                "right": {
+                    "type": "symbol",
+                    "raw": "b",
+                    "value": "b"
+                }
+            }
+        }
+    ]
+}

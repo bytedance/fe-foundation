@@ -1,0 +1,1 @@
+(function (x) {return x + $_get_by_any("scope", "y")})

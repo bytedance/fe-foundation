@@ -1,0 +1,25 @@
+{
+    "type": "call",
+    "expression": {
+        "type": "property",
+        "expression": {
+            "type": "symbol",
+            "raw": "$hook",
+            "value": "$hook"
+        },
+        "property": "numberGroup"
+    },
+    "args": [
+        {
+            "type": "symbol",
+            "value": "x",
+            "raw": "x"
+        },
+        {
+            "literal": "num",
+            "raw": "1",
+            "type": "literal",
+            "value": 1
+        }
+    ]
+}

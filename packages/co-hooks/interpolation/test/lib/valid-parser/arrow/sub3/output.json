@@ -1,0 +1,44 @@
+{
+    "type": "call",
+    "expression": {
+        "type": "parentheses",
+        "expression": {
+            "type": "arrow",
+            "params": [
+                {
+                    "type": "symbol",
+                    "value": "x",
+                    "raw": "x"
+                },
+                {
+                    "type": "symbol",
+                    "value": "y",
+                    "raw": "y"
+                }
+            ],
+            "body": {
+                "type": "binary",
+                "op": "+",
+                "left": {
+                    "type": "symbol",
+                    "value": "x",
+                    "raw": "x"
+                },
+                "right": {
+                    "literal": "num",
+                    "raw": "1",
+                    "type": "literal",
+                    "value": 1
+                }
+            }
+        }
+    },
+    "args": [
+        {
+            "literal": "num",
+            "raw": "1",
+            "type": "literal",
+            "value": 1
+        }
+    ]
+}

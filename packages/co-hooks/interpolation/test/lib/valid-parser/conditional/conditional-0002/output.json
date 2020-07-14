@@ -1,0 +1,34 @@
+{
+    "type": "conditional",
+    "condition": {
+        "type": "symbol",
+        "value": "a",
+        "raw": "a"
+    },
+    "yes": {
+        "literal": "num",
+        "raw": "1",
+        "type": "literal",
+        "value": 1
+    },
+    "alternative": {
+        "type": "conditional",
+        "condition": {
+            "type": "symbol",
+            "value": "b",
+            "raw": "b"
+        },
+        "yes": {
+            "literal": "num",
+            "raw": "2",
+            "type": "literal",
+            "value": 2
+        },
+        "alternative": {
+            "literal": "num",
+            "raw": "3",
+            "type": "literal",
+            "value": 3
+        }
+    }
+}

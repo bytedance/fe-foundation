@@ -1,2 +1,3 @@
 # hooks
-UI Foundation for React Hooks and Vue Composition Api 
+UI Foundation for React Hooks and Vue Composition Api.
+

@@ -1,0 +1,1 @@
+$_get_by_any("hooks").b(Math.floor($_get_by_any("scope", "a")))

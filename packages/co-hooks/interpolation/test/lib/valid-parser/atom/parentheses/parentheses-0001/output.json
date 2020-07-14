@@ -1,0 +1,25 @@
+{
+    "type": "call",
+    "expression": {
+        "type": "property",
+        "expression": {
+            "type": "parentheses",
+            "expression": {
+                "type": "binary",
+                "op": "+",
+                "left": {
+                    "type": "symbol",
+                    "raw": "x",
+                    "value": "x"
+                },
+                "right": {
+                    "type": "symbol",
+                    "raw": "y",
+                    "value": "y"
+                }
+            }
+        },
+        "property": "name"
+    },
+    "args": []
+}

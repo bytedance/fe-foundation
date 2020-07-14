@@ -1,0 +1,1 @@
+{"foo": "abc" + ($_get_by_any("scope", "bar").map((function (a) {return a}))) + "def"}

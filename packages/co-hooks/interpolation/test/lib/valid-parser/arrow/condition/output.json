@@ -1,0 +1,36 @@
+{
+    "type": "arrow",
+    "params": [
+        {
+            "type": "symbol",
+            "value": "x",
+            "raw": "x"
+        },
+        {
+            "type": "symbol",
+            "value": "y",
+            "raw": "y"
+        }
+    ],
+    "body":{
+        "type": "conditional",
+        "condition": {
+            "type": "symbol",
+            "value": "x",
+            "raw": "x"
+        },
+        "yes": {
+            "literal": "num",
+            "raw": "1",
+            "type": "literal",
+            "value": 1
+        },
+        "alternative": {
+            "literal": "num",
+            "raw": "2",
+            "type": "literal",
+            "value": 2
+        }
+    }
+
+}

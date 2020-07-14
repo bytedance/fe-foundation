@@ -1,0 +1,1 @@
+{foo: $_get_by_any("scope", "bar", 1 + 2) ? $_get_by_any("scope", "a") : $_get_by_any("scope", "b")}

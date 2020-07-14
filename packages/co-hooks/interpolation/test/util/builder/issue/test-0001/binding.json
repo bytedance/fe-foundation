@@ -1,0 +1,6 @@
+[
+    {
+        "key": "props.showBrick",
+        "expr": "String($model.dict.foo) !== '1' && !!($model.dict.bar)"
+    }
+]

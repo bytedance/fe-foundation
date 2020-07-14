@@ -1,0 +1,17 @@
+{
+    "expression": {
+        "left": {
+            "raw": "x",
+            "type": "symbol",
+            "value": "x"
+        },
+        "op": "+",
+        "right": {
+            "raw": "y",
+            "type": "symbol",
+            "value": "y"
+        },
+        "type": "binary"
+    },
+    "type": "parentheses"
+}

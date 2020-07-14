@@ -1,0 +1,14 @@
+{
+    "type": "binary",
+    "op": "+",
+    "left": {
+        "type": "symbol",
+        "raw": "x",
+        "value": "x"
+    },
+    "right": {
+        "type": "symbol",
+        "raw": "y",
+        "value": "y"
+    }
+}

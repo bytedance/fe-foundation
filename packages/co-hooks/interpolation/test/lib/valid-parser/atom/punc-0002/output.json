@@ -1,0 +1,27 @@
+{
+    "type": "binary",
+    "op": "/",
+    "left": {
+        "type": "parentheses",
+        "expression": {
+            "type": "binary",
+            "op": "+",
+            "left": {
+                "type": "symbol",
+                "raw": "x",
+                "value": "x"
+            },
+            "right": {
+                "type": "symbol",
+                "raw": "y",
+                "value": "y"
+            }
+        }
+    },
+    "right": {
+        "type": "literal",
+        "literal": "num",
+        "raw": "3",
+        "value": 3
+    }
+}

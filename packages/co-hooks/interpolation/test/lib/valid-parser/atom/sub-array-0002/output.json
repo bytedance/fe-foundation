@@ -1,0 +1,27 @@
+{
+    "type": "property",
+    "expression": {
+        "type": "property",
+        "expression": {
+            "type": "symbol",
+            "raw": "a",
+            "value": "a"
+        },
+        "property": {
+            "type": "binary",
+            "op": "+",
+            "left": {
+                "type": "symbol",
+                "raw": "b",
+                "value": "b"
+            },
+            "right": {
+                "type": "literal",
+                "literal": "string",
+                "value": "c",
+                "raw": "'c'"
+            }
+        }
+    },
+    "property": "d"
+}

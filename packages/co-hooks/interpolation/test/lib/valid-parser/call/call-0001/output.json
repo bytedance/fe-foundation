@@ -1,0 +1,21 @@
+{
+    "type": "call",
+    "expression": {
+        "type": "symbol",
+        "value": "numberGroup",
+        "raw": "numberGroup"
+    },
+    "args": [
+        {
+            "type": "symbol",
+            "value": "x",
+            "raw": "x"
+        },
+        {
+            "literal": "num",
+            "raw": "1",
+            "type": "literal",
+            "value": 1
+        }
+    ]
+}

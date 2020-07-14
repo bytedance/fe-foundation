@@ -1,0 +1,1 @@
+{"foo": {"bar": [$_get_by_any("scope", "bar"), $_get_by_any("scope", "bar")]}, "baz": 1, "baf": false, "ban": null}

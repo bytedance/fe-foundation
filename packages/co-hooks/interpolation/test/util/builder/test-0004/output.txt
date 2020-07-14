@@ -1,0 +1,1 @@
+{"foo": $_get_by_any("scope", "bar") + (/a/.test($_get_by_any("scope", "baz")) ? {aa: 1} : {bb: 2})}

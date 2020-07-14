@@ -1,0 +1,13 @@
+{
+    "type": "unary",
+    "op": "!",
+    "expression": {
+        "type": "unary",
+        "op": "typeof",
+        "expression": {
+            "type": "symbol",
+            "raw": "x",
+            "value": "x"
+        }
+    }
+}

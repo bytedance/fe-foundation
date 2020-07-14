@@ -1,0 +1,13 @@
+{
+    "type": "property",
+    "expression": {
+        "type": "property",
+        "expression": {
+            "type": "symbol",
+            "raw": "a",
+            "value": "a"
+        },
+        "property": "b"
+    },
+    "property": "c"
+}

@@ -1,0 +1,33 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "declaration": true,
+        "strict": true,
+        "rootDir": ".",
+        "jsx": "react",
+        "declarationDir": "./dist",
+        "moduleResolution": "node",
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "preserveSymlinks": true,
+        "resolveJsonModule": true,
+        "experimentalDecorators": true,
+        "baseUrl": "./",
+        "typeRoots": [
+            "./node_modules/@types",
+            "./types"
+        ],
+        "paths": {
+            "@co-hooks/*": [
+                "./packages/co-hooks/*"
+            ],
+            "@rc-hooks/*": [
+                "./packages/rc-hooks/*"
+            ],
+            "@vc-hooks/*": [
+                "./packages/vc-hooks/*"
+            ]
+        }
+    }
+}

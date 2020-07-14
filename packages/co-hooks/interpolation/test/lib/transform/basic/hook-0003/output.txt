@@ -1,0 +1,1 @@
+{x: 1, y: $_get_by_any("scope", "z")}

@@ -1,0 +1,14 @@
+{
+    "preset": "ts-jest",
+    "setupFiles": [
+        "./test/setup.tsx"
+    ],
+    "setupFilesAfterEnv": [
+        "jest-enzyme"
+    ],
+    "testEnvironment": "enzyme",
+    "testEnvironmentOptions": {
+        "enzymeAdapter": "react16"
+    },
+    "modulePaths": []
+}

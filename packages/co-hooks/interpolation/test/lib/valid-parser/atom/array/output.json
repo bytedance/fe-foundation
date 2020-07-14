@@ -1,0 +1,31 @@
+{
+    "type": "array",
+    "elements": [
+        {
+            "type": "literal",
+            "literal": "num",
+            "raw": "4",
+            "value": 4
+        },
+        {
+            "type": "literal",
+            "literal": "string",
+            "raw": "\"y\"",
+            "value": "y"
+        },
+        {
+            "type": "binary",
+            "op": "-",
+            "left": {
+                "type": "symbol",
+                "raw": "a",
+                "value": "a"
+            },
+            "right": {
+                "type": "symbol",
+                "raw": "b",
+                "value": "b"
+            }
+        }
+    ]
+}

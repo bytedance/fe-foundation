@@ -1,0 +1,6 @@
+[
+    {
+        "key": "foo.bar.*",
+        "expr": "bar"
+    }
+]

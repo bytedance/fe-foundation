@@ -1,0 +1,1 @@
+{"props": {"showBrick": String($_get_by_any("model", "dict", "foo")) !== '1' && !!($_get_by_any("model", "dict", "bar"))}}

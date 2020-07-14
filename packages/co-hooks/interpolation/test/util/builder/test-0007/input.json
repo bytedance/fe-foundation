@@ -1,0 +1,11 @@
+{
+    "foo": {
+        "bar": [
+            1,
+            2
+        ]
+    },
+    "baz": 1,
+    "baf": false,
+    "ban": null
+}

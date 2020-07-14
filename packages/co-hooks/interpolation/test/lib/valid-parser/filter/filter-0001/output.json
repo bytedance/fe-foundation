@@ -1,0 +1,19 @@
+{
+    "type": "filter",
+    "expression": {
+        "type": "symbol",
+        "value": "a",
+        "raw": "a"
+    },
+    "filters": [
+        {
+            "type": "call",
+            "expression": {
+                "type": "symbol",
+                "value": "b",
+                "raw": "b"
+            },
+            "args": []
+        }
+    ]
+}

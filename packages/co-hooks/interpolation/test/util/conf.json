@@ -1,0 +1,41 @@
+{
+    "symbols": [
+        {
+            "symbol": "path",
+            "direct": true,
+            "level": false
+        },
+        {
+            "symbol": "scope",
+            "direct": false,
+            "level": true
+        },
+        {
+            "symbol": "model",
+            "direct": false,
+            "level": true
+        },
+        {
+            "symbol": "root",
+            "direct": false,
+            "level": false
+        },
+        {
+            "symbol": "input",
+            "direct": true,
+            "level": false
+        },
+        {
+            "symbol": "context",
+            "direct": false,
+            "level": false
+        },
+        {
+            "symbol": "hooks",
+            "direct": false,
+            "level": false
+        }
+    ],
+    "call": "hooks",
+    "default": "scope"
+}

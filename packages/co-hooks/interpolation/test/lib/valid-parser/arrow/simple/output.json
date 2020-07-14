@@ -1,0 +1,24 @@
+{
+    "type": "arrow",
+    "params": [
+        {
+            "type": "symbol",
+            "value": "x",
+            "raw": "x"
+        }
+    ],
+    "body": {
+        "type": "binary",
+        "op": "+",
+        "left": {
+            "type": "symbol",
+            "value": "x",
+            "raw": "x"
+        },
+        "right": {
+            "type": "symbol",
+            "raw": "y",
+            "value": "y"
+        }
+    }
+}
