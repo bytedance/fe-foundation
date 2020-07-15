@@ -1,0 +1,26 @@
+{
+    "name": "@rc-hooks/popper",
+    "description": "",
+    "version": "1.0.0",
+    "main": "lib/index.js",
+    "module": "es/index.js",
+    "typings": "lib/index.d.ts",
+    "keywords": [],
+    "dependencies": {
+        "@co-hooks/dom": "^1.0.0",
+        "@co-hooks/emitter": "^1.0.0",
+        "@co-hooks/popper": "^1.0.0",
+        "@co-hooks/util": "^1.0.0",
+        "@rc-hooks/dom": "^1.0.0",
+        "@rc-hooks/portal": "^1.0.0",
+        "@rc-hooks/use": "^1.0.0"
+    },
+    "engines": {
+        "node": ">= 8.0.0",
+        "npm": ">= 5.0.0"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "gitHead": "0fef5e584a1cd443d8d6a34577368fe4cba00df4"
+}
