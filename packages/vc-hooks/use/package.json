@@ -1,0 +1,21 @@
+{
+    "name": "@vc-hooks/use",
+    "description": "useful vue hooks",
+    "version": "1.0.0",
+    "main": "lib/index.js",
+    "module": "es/index.js",
+    "typings": "lib/index.d.ts",
+    "keywords": [],
+    "engines": {
+        "node": ">= 8.0.0",
+        "npm": ">= 5.0.0"
+    },
+    "dependencies": {
+        "@co-hooks/emitter": "^1.0.0",
+        "@co-hooks/util": "^1.0.0",
+        "vue-hooks-env": "^2.1.0"
+    },
+    "publishConfig": {
+        "access": "public"
+    }
+}
