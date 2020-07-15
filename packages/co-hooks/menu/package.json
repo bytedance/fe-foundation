@@ -1,15 +1,15 @@
 {
     "name": "@co-hooks/menu",
     "description": "",
-    "version": "0.8.16",
+    "version": "1.0.0",
     "main": "lib/index.js",
     "module": "es/index.js",
     "typings": "lib/index.d.ts",
     "keywords": [],
     "dependencies": {
-        "@co-hooks/dom": "^0.8.16",
-        "@co-hooks/emitter": "^0.8.2",
-        "@co-hooks/util": "^0.8.2"
+        "@co-hooks/dom": "^1.0.0",
+        "@co-hooks/emitter": "^1.0.0",
+        "@co-hooks/util": "^1.0.0"
     },
     "engines": {
         "node": ">= 8.0.0",
@@ -17,6 +17,5 @@
     },
     "publishConfig": {
         "access": "public"
-    },
-    "gitHead": "0fef5e584a1cd443d8d6a34577368fe4cba00df4"
+    }
 }
