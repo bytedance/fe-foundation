@@ -7,7 +7,7 @@ import {Emitter} from '@co-hooks/emitter';
 import {MemCache} from '@co-hooks/mem-cache';
 import {NestWatcher} from '@co-hooks/nest-watcher';
 import {getObjectProperty, guid, setObjectProperty} from '@co-hooks/util';
-import {IValidateResult} from '@co-hooks/validate';
+import {IValidateResult, ValidateTriggerType} from '@co-hooks/validate';
 import {
     FormDomNode,
     FormModel,
@@ -31,6 +31,7 @@ export interface IFormEvent {
     'submit-failed': [Array<FormValidateError<unknown>>];
     'validate-change': [];
     'model-change': [FormModel];
+    'values-change': [string[]]
 }
 
 
@@ -70,6 +71,37 @@ export class Form extends Emitter<IFormEvent> implements IForm {
 
     public getField(id: string): IField {
         return this.map[id];
+    }
+
+    // path 可能是 'repeat.*'
+    public getFieldsByPath(path: string): FormField<unknown>[] {
+        const fields = this
+        .root
+        .getSubNodes(node => {
+
+            const {type} = node.getValue();
+
+            if (type !== FormNodeType.FIELD) {
+                return null;
+            }
+
+            return true;
+        })
+        .map(node => {
+            const {id} = node.getValue();
+
+            return this.map[id] as FormField<unknown>;
+        })
+        .filter(field => {
+            // keyIsMatch('repeat.*', repeat.0) === true
+            return NestWatcher.keyIsMatch(path, field.getPath());
+        });
+
+        if (!fields.length) {
+            console.warn(`path为${path}的field不存在`);
+        }
+
+        return fields;
     }
 
     public register(field: IField): void {
@@ -196,6 +228,31 @@ export class Form extends Emitter<IFormEvent> implements IForm {
             });
     }
 
+    // validateField: 可以指定triggerType，默认触发全部
+    public validateField(path: string, trigger: ValidateTriggerType = 'manual'): Promise<boolean> {
+        const fields = this.getFieldsByPath(path);
+        return Promise.all(fields.map(field => field.validate(trigger)))
+            .then(() => {
+                const needValdateFields = this.processNeedValidateFields(fields);
+                return !needValdateFields.length;
+            });
+    }
+
+    // validateFields: 触发全部校验
+    public validateFields(paths: string[]): Promise<boolean> {
+        return Promise.all(paths.map(path => this.validateField(path)))
+            .then(res => res.every(field => field));
+    }
+
+    // getFieldErrors: 获取错误信息
+    public getFieldsErrors(paths: string[]): Array<FormValidateError<unknown>> {
+        const fields = paths.reduce(
+            (sum, path) => sum.concat(this.getFieldsByPath(path))
+        , [] as FormField<unknown>[]);
+
+        return this.processNeedValidateFields(fields).map(item => item.getValidateError());
+    }
+
     public reset(): void {
         Object.keys(this.map).forEach(key => this.map[key].reset());
     }
@@ -233,13 +290,11 @@ export class Form extends Emitter<IFormEvent> implements IForm {
     }
 
     // endregion validate
-
-    private processNeedValidateFields(): Array<FormField<unknown>> {
-
-        return this
-            .root
-            .getSubNodes(node => {
-
+    // 有needFields则过滤它，没有则过滤所有field
+    private processNeedValidateFields(needFields?: FormField<unknown>[]): Array<FormField<unknown>> {
+        let fields = needFields;
+        if (!fields) {
+            fields = this.root.getSubNodes(node => {
                 const {type} = node.getValue();
 
                 if (type !== FormNodeType.FIELD) {
@@ -252,17 +307,20 @@ export class Form extends Emitter<IFormEvent> implements IForm {
                 const {id} = node.getValue();
 
                 return this.map[id] as FormField<unknown>;
-            })
-            .filter(field => {
-                const {valid, partial} = field.getFieldInfo();
-
-                return !valid || partial;
             });
+        }
+
+        return fields.filter(field => {
+            const {valid, partial} = field.getFieldInfo();
+
+            return !valid || partial;
+        });
     }
 
     private init(): void {
-        this.absoluteWatch(this.id, ['*'], () => {
+        this.absoluteWatch(this.id, ['*'], (changes: string[]) => {
             this.emit('model-change', this.getModel());
+            this.emit('values-change', changes.map(fieldPath => fieldPath.replace(/^model\./, '')));
         });
     }
 }

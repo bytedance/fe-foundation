@@ -94,6 +94,7 @@ export interface IPopoverOptions {
     placement?: IRcPlacement;
     offset?: IOffset;
     preventOverflow?: boolean;
+    boundariesDetectionDebounce?: boolean;
     overflowBoundaries?: IOverFlowBoundaries;
     // 避免其他方向遮挡
     preventAroundOverflow?: boolean;
@@ -173,6 +174,8 @@ export class Popover<T> extends Emitter<IPopoverEvent> {
 
     private preventOverflow: boolean = true;
 
+    private boundariesDetectionDebounce: boolean = false;
+
     private overflowBoundaries: IOverFlowBoundaries = getDefaultOverflowBoundaries();
 
     private arrowOffset: IOffset = getDefaultOffset();
@@ -218,7 +221,8 @@ export class Popover<T> extends Emitter<IPopoverEvent> {
             overflowBoundaries = getDefaultOverflowBoundaries(),
             arrow = false,
             arrowOffset = getDefaultOffset(),
-            preventAroundOverflow = false
+            preventAroundOverflow = false,
+            boundariesDetectionDebounce = false
         } = options;
 
         this.refType = refType;
@@ -228,6 +232,7 @@ export class Popover<T> extends Emitter<IPopoverEvent> {
         this.placement = placement;
         this.offset = offset;
         this.preventOverflow = preventOverflow;
+        this.boundariesDetectionDebounce = boundariesDetectionDebounce;
         this.overflowBoundaries = overflowBoundaries;
         this.preventAroundOverflow = preventAroundOverflow;
         this.arrow = arrow;
@@ -475,7 +480,10 @@ export class Popover<T> extends Emitter<IPopoverEvent> {
             bottom: top + popoverRect.height
         });
 
-        const [touchPopperRect, touch] = this.getRectByOverflowBoundaries(popoverRect);
+        const [touchPopperRect, touch] = this.getRectByOverflowBoundaries(
+            popoverRect,
+            this.popoverTouch
+        );
 
         const fixed = this.getRefFixed() || touch.fixed;
         const popStyle: CSSProperties = {
@@ -647,25 +655,34 @@ export class Popover<T> extends Emitter<IPopoverEvent> {
         };
     }
 
-    private getRectByOverflowBoundaries(popoverRect: IElementPosition): [IElementPosition, ITouch] {
+    private getRectByOverflowBoundaries(
+        popoverRect: IElementPosition,
+        currentTouch: ITouch
+    ): [IElementPosition, ITouch] {
         const newRect = clone(popoverRect);
         const availBoundaries = this.getAvailBoundaries();
         const direction = this.placement.split('-')[0] as keyof IOverFlowBoundaries;
         let isVertical = direction === 'top' || direction === 'bottom';
         const res: ITouch = getDefaultTouch();
         const refRect = this.getRefRect();
+        const shouldFlip = (
+            this.boundariesDetectionDebounce
+                && currentTouch[isVertical ? 'touchY' : 'touchX'])
+            || this.isRectOverBoundary(availBoundaries, newRect, direction);
 
         // 调整位置后 * bugfix: 前置检测
-        if (this.isRectOverBoundary(availBoundaries, newRect, direction)) {
+        if (shouldFlip) {
             const reversedDir = reversedDirection[direction];
             const nextValue = refRect[reversedDir] - this.offset[isVertical ? 'y' : 'x'];
-            const nextRect = {...newRect};
-            this.assignRectValue(nextRect, direction, nextValue);
-            if (this.isRectOverBoundary(availBoundaries, nextRect, reversedDir)) {
+            const flippedRect = {...newRect};
+            this.assignRectValue(flippedRect, direction, nextValue);
+
+            // 翻转位置后仍然超出边界，使用原先的位置，否则使用翻转后的 rect
+            if (this.isRectOverBoundary(availBoundaries, flippedRect, reversedDir)) {
                 this.assignRectValue(newRect, direction, nextValue);
             } else {
                 res[isVertical ? 'touchY' : 'touchX'] = true;
-                Object.assign(newRect, nextRect);
+                Object.assign(newRect, flippedRect);
             }
         }
 

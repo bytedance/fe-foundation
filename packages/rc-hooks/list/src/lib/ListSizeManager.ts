@@ -2,8 +2,6 @@
  * @file ListSizeManager 大小控制器
  */
 
-import {EventEmitter} from 'events';
-
 export type IListSizeGetter = (index: number) => number | false;
 
 export interface IListSizeManagerOptions {
@@ -20,7 +18,7 @@ export interface IListSizeInfo {
     offset: number;
 }
 
-export class ListSizeManager extends EventEmitter {
+export class ListSizeManager {
 
     // 模拟大小
     private estimatedSize: number = 0;

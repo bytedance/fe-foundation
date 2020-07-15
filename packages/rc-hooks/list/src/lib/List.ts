@@ -2,7 +2,7 @@
  * @file List 列表元素
  */
 
-import {EventEmitter} from 'events';
+import {Emitter} from '@co-hooks/emitter';
 import {IElementSize} from '@co-hooks/dom';
 import {IListSizeGetter, IListSizeInfo, ListSizeManager} from './ListSizeManager';
 
@@ -12,20 +12,20 @@ export interface IListOptions {
     itemCount: number;
 }
 
-export class List extends EventEmitter {
+export interface IListEvent {
+    'scroller-need-update': [];
+    'wrapper-need-update': [];
+    'scroller-need-scroll': [number];
+}
 
-    private offset: number = 0;
+export class List extends Emitter<IListEvent> {
+
+    private readonly offset: number = 0;
 
     private height: number = 0;
 
-    private manager = new ListSizeManager();
+    private readonly manager: ListSizeManager = new ListSizeManager();
 
-    constructor() {
-
-        super();
-
-        this.setMaxListeners(0);
-    }
 
     // 更新组信息
     public updateListOptions(options: IListOptions): void {

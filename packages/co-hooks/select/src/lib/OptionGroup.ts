@@ -1,7 +1,7 @@
 /**
  * @file OptionGroup
  */
-import {EventEmitter} from 'events';
+import {Emitter} from '@co-hooks/emitter';
 import {guid} from '@co-hooks/util';
 import {IOption, Option} from './Option';
 import {Select} from './Select';
@@ -10,11 +10,11 @@ export interface IOptionGroupOptions {
     title: string;
 }
 
-export class OptionGroup<T, P> extends EventEmitter implements IOption {
+export class OptionGroup<T, P> extends Emitter<{}> implements IOption {
 
     private readonly id: string;
 
-    private select: Select<T, P>;
+    private readonly select: Select<T, P>;
 
     private readonly parent: OptionGroup<T, P> | null = null;
 
@@ -39,7 +39,6 @@ export class OptionGroup<T, P> extends EventEmitter implements IOption {
             this.parent.registerOptionGroup(this);
         }
 
-        this.setMaxListeners(0);
     }
 
     public dispose(): void {

@@ -12,6 +12,7 @@ export interface IGroupItemOptions<T, P> {
     group: string;
     free: boolean;
     value: T;
+    onSelect?: (itemValue: T, groupValue: T[]) => T[]
 }
 
 export type IGroupItemRenderProps<T, P> = [
@@ -40,6 +41,9 @@ export class GroupItem<T, P> extends Emitter<IGroupItemEvent> {
     // 当前是否已经销毁
     private disposed: boolean = false;
 
+    // 如果有onSelect 就调onSelect
+    public onSelect: IGroupItemOptions<T, P>['onSelect'];
+
     private readonly ownerGroup: Group<T, P>;
 
     constructor(ownerGroup: Group<T, P>, conf: IGroupItemOptions<T, P>) {
@@ -48,7 +52,7 @@ export class GroupItem<T, P> extends Emitter<IGroupItemEvent> {
         this.group = conf.group;
         this.value = conf.value;
         this.free = !!conf.free;
-
+        this.onSelect = conf.onSelect;
         this.ownerGroup = ownerGroup;
         this.ownerGroup.register(this);
     }

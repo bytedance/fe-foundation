@@ -121,7 +121,7 @@ export class NestWatcher {
     }
 
     // 判断两组监控的Key是否匹配
-    private static keysIsMatch(matchKeys: string[], originKeys: string[]): boolean {
+    public static keysIsMatch(matchKeys: string[], originKeys: string[]): boolean {
 
         let i = 0;
 
@@ -138,7 +138,7 @@ export class NestWatcher {
     }
 
     // 判断两组监控的Key是否匹配
-    private static keyIsMatch(matchKey: string, originKey: string): boolean {
+    public static keyIsMatch(matchKey: string, originKey: string): boolean {
         return NestWatcher.keysIsMatch(NestWatcher.splitKey(matchKey), NestWatcher.splitKey(originKey));
     }
 
