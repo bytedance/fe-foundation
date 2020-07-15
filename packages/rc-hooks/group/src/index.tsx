@@ -1,5 +1,5 @@
 /**
- * @file RcMask 遮罩层
+ * @file Group 分组元素
  */
 
 export * from './components/RcGroup';

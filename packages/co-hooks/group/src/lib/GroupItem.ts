@@ -1,5 +1,5 @@
 /**
- * @file RadioGroupItem 单个Radio项目
+ * @file GroupItem 单个组元素
  */
 
 import {UnionOmit, guid, shallowMerge} from '@co-hooks/util';
