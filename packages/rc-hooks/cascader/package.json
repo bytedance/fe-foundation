@@ -1,0 +1,23 @@
+{
+    "name": "@rc-hooks/cascader",
+    "description": "",
+    "version": "1.0.0",
+    "main": "lib/index.js",
+    "module": "es/index.js",
+    "typings": "lib/index.d.ts",
+    "keywords": [],
+    "dependencies": {
+        "@co-hooks/cascader": "^1.0.0",
+        "@co-hooks/emitter": "^1.0.0",
+        "@co-hooks/tree-map": "^1.0.0",
+        "@co-hooks/util": "^1.0.0",
+        "@rc-hooks/use": "^1.0.0"
+    },
+    "engines": {
+        "node": ">= 8.0.0",
+        "npm": ">= 5.0.0"
+    },
+    "publishConfig": {
+        "access": "public"
+    }
+}
