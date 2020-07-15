@@ -1,0 +1,22 @@
+{
+    "name": "@co-hooks/form",
+    "description": "form model",
+    "version": "1.0.0",
+    "main": "lib/index.js",
+    "module": "es/index.js",
+    "typings": "lib/index.d.ts",
+    "keywords": [],
+    "engines": {
+        "node": ">= 8.0.0",
+        "npm": ">= 5.0.0"
+    },
+    "dependencies": {
+        "@co-hooks/dom-node": "^1.0.0",
+        "@co-hooks/mem-cache": "^1.0.0",
+        "@co-hooks/nest-watcher": "^1.0.0",
+        "@co-hooks/validate": "^1.0.0"
+    },
+    "publishConfig": {
+        "access": "public"
+    }
+}
