@@ -1,6 +1,5 @@
 import React, {ChangeEvent, useCallback, useEffect, useRef, useState} from 'react';
 import {classnames, guid} from '@co-hooks/util';
-import {usePrefixCls} from '@byte-design/config';
 import {IRcTriggerProps, useUpload} from '..';
 
 export function RcTrigger(props: IRcTriggerProps): JSX.Element | null {
@@ -14,7 +13,7 @@ export function RcTrigger(props: IRcTriggerProps): JSX.Element | null {
     const [key, setKey] = useState(guid);
     const fileUpload = useUpload();
     const inputRef = useRef<HTMLInputElement>(null);
-    const cls = classnames(usePrefixCls('upload-trigger', {disabled}), className);
+    const cls = classnames('rc-upload-trigger', {'rc-upload-trigger-disabled': disabled}, className);
     const onClick = useCallback(() => {
         if (!disabled) {
             fileUpload.clickInput();
@@ -33,7 +32,7 @@ export function RcTrigger(props: IRcTriggerProps): JSX.Element | null {
     const _children = typeof children === 'function' ? children({disabled}) : children;
     return (
         <span className={cls}>
-            <label onClick={onClick}>{ _children }</label>
+            <label onClick={onClick}>{_children}</label>
             <input
                 type="file"
                 key={key}
