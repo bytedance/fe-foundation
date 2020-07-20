@@ -1,6 +1,5 @@
 /**
  * @file upload
- * @author donghao(donghao.640@bytedance.com)
  */
 
 import React from 'react';

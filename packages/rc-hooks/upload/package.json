@@ -1,5 +1,5 @@
 {
-    "name": "@rc-hooks/use",
+    "name": "@rc-hooks/upload",
     "description": "useful react hooks",
     "version": "1.0.0",
     "main": "lib/index.js",

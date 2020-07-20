@@ -1,6 +1,7 @@
 import {RefObject} from 'react';
 import {Emitter} from '@co-hooks/emitter';
-import {FileStatus, IBaseFile, IFileUploadErrorMessage, IFileUploadEvent, IFileUploadOptions} from '..';
+import {FileStatus} from '../types/enum';
+import {IBaseFile, IFileUploadEvent, IFileUploadOptions, IFileUploadErrorMessage} from '../types/interface';
 import {FileClass} from './file';
 
 interface IFilesMap {

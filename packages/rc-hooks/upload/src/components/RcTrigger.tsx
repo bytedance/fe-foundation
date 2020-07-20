@@ -1,6 +1,7 @@
 import React, {ChangeEvent, useCallback, useEffect, useRef, useState} from 'react';
 import {classnames, guid} from '@co-hooks/util';
-import {IRcTriggerProps, useUpload} from '..';
+import {useUpload} from '../hooks/useUpload';
+import {IRcTriggerProps} from '../types/interface';
 
 export function RcTrigger(props: IRcTriggerProps): JSX.Element | null {
     const {

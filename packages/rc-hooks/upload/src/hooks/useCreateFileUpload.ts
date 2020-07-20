@@ -1,6 +1,5 @@
 /**
  * @file useCreateFileUpload
- * @author donghao.640
  */
 
 import {useSingleton} from '@rc-hooks/use';
