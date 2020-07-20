@@ -116,7 +116,9 @@ export class Group<T, P> {
             return;
         }
 
-        this.onChange(value.concat(item.value));
+        const currentValue = typeof item.onSelect === 'function' ? item.onSelect(item.value, value) : value.concat(item.value);
+
+        this.onChange(currentValue);
     }
 
     public isItemChecked(item: GroupItem<T, P>): boolean {

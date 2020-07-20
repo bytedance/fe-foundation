@@ -1,7 +1,7 @@
 /**
  * @file Carousel
  */
-import {EventEmitter} from 'events';
+import {Emitter} from '@co-hooks/emitter';
 import React, {CSSProperties, Children} from 'react';
 import {getKeys} from '@co-hooks/util';
 import {IElementSize, getDefaultElementSize} from '@co-hooks/dom';
@@ -25,7 +25,13 @@ export interface ICarouselOptions {
     paginationType: PaginationType;
 }
 
-export class Carousel extends EventEmitter {
+export interface ICarouselEvents{
+    'active-index-change': [number];
+    'begin-translate': [React.CSSProperties];
+    'carousel-size-change': [IElementSize];
+}
+
+export class Carousel extends Emitter<ICarouselEvents> {
     public delay: number;
     public speed: number;
     public effect: Effect;

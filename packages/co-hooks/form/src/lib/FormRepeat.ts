@@ -5,9 +5,10 @@
 import {NestWatcher} from '@co-hooks/nest-watcher';
 import {deepClone, getUniqueKey} from '@co-hooks/util';
 import {getNestWatchPath} from '../util';
-import {FormDomNode} from '../types';
+import {FormDomNode, FormNode} from '../types';
 import {FormGroup, IFormGroupInfo, IFormGroupOptions} from './FormGroup';
 import {Form} from './Form';
+import {DomNode} from '@co-hooks/dom-node';
 
 export interface IFormRepeatOptions<T> extends Omit<IFormGroupOptions, 'defaultValue'> {
     defaultValue?: T[];
@@ -151,6 +152,8 @@ export class FormRepeat<T> extends FormGroup {
         const len = oldList.length;
         const usedKeys: Record<string, boolean> = {};
 
+        let deleted: DomNode<FormNode>;
+
         newPartList.forEach((part, i) => {
 
             const elem = this.parts[part] || this.createPartNode(part);
@@ -160,7 +163,9 @@ export class FormRepeat<T> extends FormGroup {
             if (i >= len) {
                 container.appendChild(elem);
             } else if (elem !== oldList[i]) {
-                container.insertBefore(elem, oldList[i]);
+                // fix: 基准相对于最先删除的node
+                deleted = deleted ?? oldList[i];
+                container.insertBefore(elem, deleted);
             }
         });
 

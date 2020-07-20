@@ -118,7 +118,7 @@ export const dataURL2ArrayBuffer = (dataURI: string) => {
  * @param {ArrayBuffer} head 头信息
  * @return {ArrayBuffer}
  */
-export const updateImageHead = (buffer: ArrayBuffer, head: ArrayBuffer): ArrayBufferLike => {
+export const updateImageHead = (buffer: ArrayBuffer, head: ArrayBuffer) => {
     const data = parseHead(buffer, true);
     let bodyoffset = 2;
 
@@ -144,7 +144,7 @@ export const updateImageHead = (buffer: ArrayBuffer, head: ArrayBuffer): ArrayBu
  * @param {string} type MIME类型
  * @return {Blob}
  */
-export const arrayBufferToBlob = (buffer: ArrayBuffer, type: string): Blob => new Blob([buffer], type ? {type} : {});
+export const arrayBufferToBlob = (buffer: ArrayBuffer, type: string) => new Blob([buffer], type ? {type} : {});
 
 /**
  * 将dataURI形式的图片转换成BLOB
@@ -152,7 +152,7 @@ export const arrayBufferToBlob = (buffer: ArrayBuffer, type: string): Blob => ne
  * @param {string} dataURI 字符串形式的图片
  * @return {Blob}
  */
-export const dataURL2Blob = (dataURI: string): Blob => {
+export const dataURL2Blob = (dataURI: string) => {
     const parts = dataURI.split(',');
     // tslint:disable-next-line
     const byteStr = ~parts[0].indexOf('base64') ? atob(parts[1]) : decodeURIComponent(parts[1]);
