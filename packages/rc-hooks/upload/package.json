@@ -1,14 +1,14 @@
 {
     "name": "@rc-hooks/upload",
     "description": "useful react hooks",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "main": "lib/index.js",
     "module": "es/index.js",
     "typings": "lib/index.d.ts",
     "keywords": [],
     "dependencies": {
-        "@co-hooks/util": "^1.0.0",
-        "@byte-design/config": "^1.0.0"
+        "@byte-design/config": "^1.0.0",
+        "@co-hooks/util": "^1.0.1"
     },
     "engines": {
         "node": ">= 8.0.0",

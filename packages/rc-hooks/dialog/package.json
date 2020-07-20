@@ -1,19 +1,19 @@
 {
     "name": "@rc-hooks/dialog",
     "description": "",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "main": "lib/index.js",
     "module": "es/index.js",
     "typings": "lib/index.d.ts",
     "keywords": [],
     "dependencies": {
-        "@co-hooks/dom": "^1.0.0",
-        "@co-hooks/util": "^1.0.0",
-        "@rc-hooks/animation": "^1.0.0",
-        "@rc-hooks/dom": "^1.0.0",
-        "@rc-hooks/mask": "^1.0.0",
-        "@rc-hooks/portal": "^1.0.0",
-        "@rc-hooks/use": "^1.0.0"
+        "@co-hooks/dom": "^1.0.1",
+        "@co-hooks/util": "^1.0.1",
+        "@rc-hooks/animation": "^1.0.1",
+        "@rc-hooks/dom": "^1.0.1",
+        "@rc-hooks/mask": "^1.0.1",
+        "@rc-hooks/portal": "^1.0.1",
+        "@rc-hooks/use": "^1.0.1"
     },
     "engines": {
         "node": ">= 8.0.0",
