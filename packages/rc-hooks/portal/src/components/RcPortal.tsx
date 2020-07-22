@@ -5,6 +5,7 @@
 import {ReactNode, ReactPortal, useEffect, useRef} from 'react';
 import ReactDOM from 'react-dom';
 import {useSingleton} from '@rc-hooks/use';
+import {isClient} from '@co-hooks/dom';
 import {equal} from '@co-hooks/util';
 
 interface IRcPortal {
@@ -12,6 +13,8 @@ interface IRcPortal {
     children: ReactNode;
     onUpdated?: () => void;
 }
+
+const documentBody = isClient() ? document.body : null;
 
 export type IRcPortalProps = IRcPortal;
 
@@ -23,19 +26,19 @@ export function RcPortal(props: IRcPortalProps): ReactPortal | null {
     } = props;
 
     const prevParent = useRef<HTMLElement | null>(null);
-    const container = useSingleton(() => document.createElement('div'));
+    const container = useSingleton(() => (isClient() ? document.createElement('div') : null));
 
-    const parent = getContainer == null ? document.body : getContainer();
+    const parent = getContainer == null ? documentBody : getContainer();
 
     const isEqual = equal(prevParent.current, parent);
     prevParent.current = parent;
 
-    if (!isEqual && parent) {
+    if (!isEqual && parent && container) {
         parent.appendChild(container);
     }
 
     useEffect(() => () => {
-        if (container.parentNode) {
+        if (container?.parentNode) {
             container.parentNode.removeChild(container);
         }
     }, []);
@@ -47,7 +50,7 @@ export function RcPortal(props: IRcPortalProps): ReactPortal | null {
     });
 
     // parent被挂载成功，才初始化children
-    if (parent) {
+    if (parent && container) {
         return ReactDOM.createPortal(children, container);
     }
 

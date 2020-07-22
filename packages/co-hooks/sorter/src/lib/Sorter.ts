@@ -20,10 +20,6 @@ export class Sorter<T, E> extends Emitter<ISorterEvents> {
 
     private containers: Record<string, Container<T, E>> = {};
 
-    constructor() {
-        super();
-    }
-
     public register(name: string, container: Container<T, E>): void {
         this.containers[name] = container;
     }
@@ -32,7 +28,10 @@ export class Sorter<T, E> extends Emitter<ISorterEvents> {
         delete this.containers[name];
     }
 
-    public setSorter(from: ISortableInfo<ISorterDragData<T, E>> | null, to: ISortableInfo<ISorterDragData<T, E>>): void {
+    public setSorter(
+        from: ISortableInfo<ISorterDragData<T, E>> | null,
+        to: ISortableInfo<ISorterDragData<T, E>>
+    ): void {
 
         if (from != null) {
 

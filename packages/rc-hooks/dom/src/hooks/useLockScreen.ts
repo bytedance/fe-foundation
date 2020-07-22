@@ -1,7 +1,7 @@
 /**
  * @file useLockScreen
  */
-import {getScrollbarWidth} from '@co-hooks/dom';
+import {getScrollbarWidth, isClient} from '@co-hooks/dom';
 import {useCallback} from 'react';
 
 export interface IUseLockScreenResult {
@@ -24,6 +24,10 @@ export function useLockScreen(): IUseLockScreenResult {
         }
 
         locked = true;
+
+        if (!isClient()) {
+            return;
+        }
 
         documentBodyStyle = {
             overflow: document.body.style.getPropertyValue('overflow'),
@@ -58,6 +62,10 @@ export function useLockScreen(): IUseLockScreenResult {
         }
 
         locked = false;
+
+        if (!isClient()) {
+            return;
+        }
 
         Object.assign(document.body.style, documentBodyStyle);
     }, []);

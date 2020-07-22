@@ -52,7 +52,7 @@ export class FileClass implements IFileClass {
                     this.fileType = FileType.IMAGE;
                 }
                 if (this.fileType === FileType.IMAGE) {
-                    this.previewUrl = window.URL.createObjectURL(file);
+                    this.previewUrl = URL.createObjectURL(file);
                 }
             }
         }
@@ -61,7 +61,7 @@ export class FileClass implements IFileClass {
     public updateFile(options: Partial<IBaseFile>): this {
         // TODO 待优化
         if (options.file && this.file !== options.file) {
-            this.previewUrl = window.URL.createObjectURL(options.file);
+            this.previewUrl = URL.createObjectURL(options.file);
         }
         for (let name in options) {
             if (Object.prototype.hasOwnProperty.call(options, name)) {
@@ -133,7 +133,7 @@ export class FileClass implements IFileClass {
 
     public destroy(): void {
         if (this.previewUrl) {
-            window.URL.revokeObjectURL(this.previewUrl);
+            URL.revokeObjectURL(this.previewUrl);
             this.previewUrl = '';
         }
     }

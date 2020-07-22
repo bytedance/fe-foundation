@@ -35,10 +35,12 @@ export function useTimeout(handler: VoidFunction): ITimeoutResult {
             return;
         }
 
-        timer = window.setTimeout(() => {
+        const timerHandler: Function = () => {
             timer = null;
             handler();
-        }, timeout);
+        };
+
+        timer = setTimeout(timerHandler, timeout);
     };
 
     onUnmounted(teardown);
