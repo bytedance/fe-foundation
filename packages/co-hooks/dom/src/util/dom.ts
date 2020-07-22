@@ -313,9 +313,7 @@ export function removeClass(ele: HTMLElement, className: string): void {
     }
 }
 
-const styleMap: CSSStyleDeclaration | {} = isClient()
-    ? window.document.createElement('div').style
-    : {};
+const styleMap: CSSStyleDeclaration | {} = isClient() ? document.createElement('div').style : {};
 
 export function getPrefixedStyleKey(styleKey: string): string[] {
     if (!styleKey.length) {

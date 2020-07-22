@@ -136,7 +136,7 @@ export class Draggable<T> extends Emitter<IDraggableEventType<T>> {
     private static setOffset(ele: HTMLElement, offset: Partial<IOffset>): void {
 
         const {x, y} = offset;
-        const {position, left: styleLeft, top: styleTop} = window.getComputedStyle(ele);
+        const {position, left: styleLeft, top: styleTop} = getComputedStyle(ele);
 
         if (position === 'static') {
             ele.style.position = 'relative';
@@ -406,7 +406,7 @@ export class Draggable<T> extends Emitter<IDraggableEventType<T>> {
 
         const {dragType} = this;
         const target = e.target;
-        const {width, height} = window.getComputedStyle(target);
+        const {width, height} = getComputedStyle(target);
 
         if (dragType === 'move-self') {
             this.actionEle = target;
@@ -522,22 +522,23 @@ export class Draggable<T> extends Emitter<IDraggableEventType<T>> {
     }
 
     private startScrollableTime(): void {
-
-        this.scrollableTimeId = window.setTimeout(() => {
+        const handler: Function = () => {
 
             this.abortScrollableTime();
             this.isStartScroll = true;
             this.containerScroll();
 
             this.emit('scroll-start', this.scrollDirection);
-        }, this.scrollableDelay);
+        };
+
+        this.scrollableTimeId = setTimeout(handler, this.scrollableDelay);
     }
 
     private containerScroll(): void {
 
         const [horizontalDir, verticalDir] = this.scrollDirection;
 
-        this.scrollTimeId = window.setInterval(() => {
+        const handler: Function = () => {
 
             const scrollTop = this.container?.scrollTop ?? 0;
             const scrollLeft = this.container?.scrollLeft ?? 0;
@@ -558,7 +559,9 @@ export class Draggable<T> extends Emitter<IDraggableEventType<T>> {
                 top: scrollTop + y
             });
 
-        }, 16.6);
+        };
+
+        this.scrollTimeId = setInterval(handler, 16.6);
     }
 
     private containerScrollAbort(): void {
