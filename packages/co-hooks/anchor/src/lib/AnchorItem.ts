@@ -2,7 +2,7 @@
  * @file AnchorItem
  */
 import {guid} from '@co-hooks/util';
-import {getElementScroll} from '@co-hooks/dom';
+import {getElementScroll, isClient} from '@co-hooks/dom';
 import {Anchor} from './Anchor';
 
 export interface IAnchorItemOptions {
@@ -47,7 +47,7 @@ export class AnchorItem {
         }
 
         if (hashMatcherRegx.exec(href)) {
-            const target = document.querySelector(href);
+            const target = isClient() ? document.querySelector(href) : null;
 
             if (!target) {
                 return false;

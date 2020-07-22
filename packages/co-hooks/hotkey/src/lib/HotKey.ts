@@ -1,6 +1,7 @@
 /**
  * @file HotKey
  */
+import {isClient} from '@co-hooks/dom';
 import {MAP, SHIFT_MAP, SPECIAL_ALIASES} from './AllKeysMap';
 
 export type CallbackFun = (e: KeyboardEvent, hotKey: string) => void | false;
@@ -22,16 +23,20 @@ export interface IHotKeyInfo {
 
 export class HotKey {
 
-    private ele: HTMLDocument | HTMLElement = document;
+    private ele: HTMLDocument | HTMLElement | null = isClient() ? document : null;
 
     private readonly callbacks: {[key: string]: IHotKeyInfo[]} = {};
 
     constructor() {
-        this.bindEvent(this.ele);
+        if (this.ele) {
+            this.bindEvent(this.ele);
+        }
     }
 
     public dispose(): void {
-        this.unbindEvent(this.ele);
+        if (this.ele) {
+            this.unbindEvent(this.ele);
+        }
     }
 
     public init(ele: HTMLElement | HTMLDocument): void {

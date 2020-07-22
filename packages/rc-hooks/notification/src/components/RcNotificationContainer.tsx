@@ -15,7 +15,7 @@ export interface IRcNotificationContainerProps<T extends INoticeBaseProps> {
     placement: string;
     position: IRcPosition;
     Component: ComponentType<T>;
-    container: HTMLElement;
+    container: HTMLElement | null;
     animation?: IUseChildrenEnterLeaveOptions<IRcNotificationProps<T>>;
 }
 

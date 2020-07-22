@@ -1,7 +1,7 @@
 /**
  * @file PopperCore
  */
-import {DocClickHandler} from '@rc-hooks/dom';
+import {DocClickHandler, isClient} from '@rc-hooks/dom';
 import {Popper} from './Popper';
 import {Trigger} from './Trigger';
 
@@ -31,8 +31,10 @@ export class PopperCore {
 
         if (!Object.keys(this.popperMap).length) {
             this.eventFlag = false;
-            document.removeEventListener('click', this.onDocumentClickCapture, true);
-            document.removeEventListener('click', this.onDocumentClick);
+            if (isClient()) {
+                document.removeEventListener('click', this.onDocumentClickCapture, true);
+                document.removeEventListener('click', this.onDocumentClick);
+            }
         }
     }
 
@@ -41,8 +43,10 @@ export class PopperCore {
         if (!this.eventFlag) {
 
             this.eventFlag = true;
-            document.addEventListener('click', this.onDocumentClickCapture, true);
-            document.addEventListener('click', this.onDocumentClick);
+            if (isClient()) {
+                document.addEventListener('click', this.onDocumentClickCapture, true);
+                document.addEventListener('click', this.onDocumentClick);
+            }
         }
     }
 

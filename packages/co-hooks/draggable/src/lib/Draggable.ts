@@ -9,7 +9,8 @@ import {
     getDefaultElementPosition,
     getDefaultOverflowBoundaries,
     getDocScroll,
-    getZIndex
+    getZIndex,
+    isClient
 } from '@co-hooks/dom';
 import {Drag, IDrag, IDragEvent, IMousePos} from '@co-hooks/drag';
 
@@ -99,7 +100,13 @@ export interface IDraggableEventType<T> {
 
 export class Draggable<T> extends Emitter<IDraggableEventType<T>> {
 
-    private static getOffsetPosition(ele: HTMLElement, offsetEle?: HTMLElement): IElementPosition {
+    private static getOffsetPosition(
+        ele: HTMLElement | null,
+        offsetEle?: HTMLElement
+    ): IElementPosition {
+        if (!ele) {
+            return getDefaultElementPosition();
+        }
 
         const {left, top, width, height} = ele.getBoundingClientRect();
         const {scrollTop, scrollLeft} = getDocScroll();
@@ -152,7 +159,7 @@ export class Draggable<T> extends Emitter<IDraggableEventType<T>> {
 
     protected getContainer?: (e: IDragEvent<T>) => HTMLElement | null;
 
-    protected container: HTMLElement = document.body;
+    protected container: HTMLElement | null = isClient() ? document.body : null;
 
     private readonly drag: Drag<T> = new Drag();
 
@@ -532,8 +539,8 @@ export class Draggable<T> extends Emitter<IDraggableEventType<T>> {
 
         this.scrollTimeId = window.setInterval(() => {
 
-            const scrollTop = this.container.scrollTop || 0;
-            const scrollLeft = this.container.scrollLeft || 0;
+            const scrollTop = this.container?.scrollTop ?? 0;
+            const scrollLeft = this.container?.scrollLeft ?? 0;
 
             let x = 0;
             let y = 0;
@@ -546,7 +553,7 @@ export class Draggable<T> extends Emitter<IDraggableEventType<T>> {
                 y = (verticalDir === 'top' ? -1 : 1) * this.scrollStep;
             }
 
-            this.container.scrollTo({
+            this.container?.scrollTo({
                 left: scrollLeft + x,
                 top: scrollTop + y
             });

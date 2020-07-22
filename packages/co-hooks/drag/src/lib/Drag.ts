@@ -3,7 +3,7 @@
  */
 
 import {Emitter} from '@co-hooks/emitter';
-import {closest} from '@co-hooks/dom';
+import {closest, isClient} from '@co-hooks/dom';
 
 export type IsBoolean = () => boolean;
 
@@ -47,49 +47,44 @@ const ALL_DRAG_ELEMENTS: IDragInterface[] = [];
 // 当前激活的拖拽元素
 let currentDragElement: IDragInterface | null = null;
 
-// 当前有激活元素时，屏蔽select、touch、click事件
-document.addEventListener('selectstart', e => {
+if (isClient()) {
+    // 当前有激活元素时，屏蔽select、touch、click事件
+    document.addEventListener('selectstart', e => {
+        if (currentDragElement) {
+            e.preventDefault();
+        }
+    }, false);
 
-    if (currentDragElement) {
-        e.preventDefault();
-    }
-}, false);
+    document.addEventListener('touchstart', e => {
+        if (currentDragElement) {
+            e.preventDefault();
+        }
+    }, false);
 
-document.addEventListener('touchstart', e => {
+    document.addEventListener('dragstart', e => {
+        if (currentDragElement) {
+            e.preventDefault();
+        }
+    }, false);
 
-    if (currentDragElement) {
-        e.preventDefault();
-    }
-}, false);
+    document.addEventListener('click', e => {
+        if (currentDragElement) {
+            e.preventDefault();
+        }
+    }, false);
 
-document.addEventListener('dragstart', e => {
+    document.addEventListener('mousemove', e => {
+        if (currentDragElement) {
+            currentDragElement.handleEvent(e);
+        }
+    }, false);
 
-    if (currentDragElement) {
-        e.preventDefault();
-    }
-}, false);
-
-document.addEventListener('click', e => {
-    if (currentDragElement) {
-        e.preventDefault();
-    }
-}, false);
-
-document.addEventListener('mousemove', e => {
-
-    if (currentDragElement) {
-        currentDragElement.handleEvent(e);
-    }
-
-}, false);
-
-document.addEventListener('mouseup', e => {
-
-    if (currentDragElement) {
-        currentDragElement.handleEvent(e);
-    }
-
-}, false);
+    document.addEventListener('mouseup', e => {
+        if (currentDragElement) {
+            currentDragElement.handleEvent(e);
+        }
+    }, false);
+}
 
 export interface IDragEventType<T> {
     'drag-prepare': [IDragEvent<T>];

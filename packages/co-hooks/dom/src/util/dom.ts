@@ -164,6 +164,9 @@ export function isElementPositionCross(container: IElementPosition, target: IEle
 }
 
 export function isFixed(element: HTMLElement): boolean {
+    if (!isClient()) {
+        return false;
+    }
 
     if (element === document.body) {
         return false;
@@ -177,6 +180,9 @@ export function isFixed(element: HTMLElement): boolean {
 }
 
 export function isSticky(element: HTMLElement): boolean {
+    if (!isClient()) {
+        return false;
+    }
 
     if (element === document.body) {
         return false;
@@ -213,7 +219,11 @@ export function getDocScroll(): IElementScroll {
     };
 }
 
-export function getElementScroll(elem: HTMLElement): IElementScroll {
+export function getElementScroll(elem: HTMLElement | null): IElementScroll {
+    if (!isClient() || !elem) {
+        return getDefaultElementScroll();
+    }
+
     const realElem = elem === document.body || elem === document.documentElement ? window : elem;
 
     if (isWindow(realElem)) {
@@ -303,8 +313,9 @@ export function removeClass(ele: HTMLElement, className: string): void {
     }
 }
 
-// server side render
-const styleMap = window?.document?.createElement?.('div')?.style ?? {};
+const styleMap: CSSStyleDeclaration | {} = isClient()
+    ? window.document.createElement('div').style
+    : {};
 
 export function getPrefixedStyleKey(styleKey: string): string[] {
     if (!styleKey.length) {
@@ -328,7 +339,7 @@ export function getPrefixedEventKey(eventKey: string): string[] {
     return getPrefixedEventKey.prefixes.reduce<string[]>((prev, prefix) => {
         const prefixedLowerKey = `${prefix}${eventKey}`.toLowerCase();
         const camelCaseKey = (prefix ? `${prefix}${upperKey}` : lowerKey);
-        if (window && `on${prefixedLowerKey}` in window) {
+        if (isClient() && `on${prefixedLowerKey}` in window) {
             return prev.concat(prefixedLowerKey, camelCaseKey);
         }
         return prev;
@@ -338,6 +349,10 @@ export function getPrefixedEventKey(eventKey: string): string[] {
 getPrefixedEventKey.prefixes = ['', 'webkit', 'moz', 'MS', 'o'];
 
 export function getScrollbarWidth(): number {
+    if (!isClient()) {
+        return 0;
+    }
+
     const innerHeight = window.innerHeight || document.documentElement.clientHeight;
     if (document.body.scrollHeight > innerHeight) {
         return 0;
