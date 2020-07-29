@@ -1,14 +1,14 @@
 {
     "name": "@co-hooks/autocomplete",
     "description": "自动完成组件",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "main": "lib/index.js",
     "module": "es/index.js",
     "typings": "lib/index.d.ts",
     "keywords": [],
     "dependencies": {
         "@co-hooks/emitter": "^1.0.1",
-        "@co-hooks/util": "^1.0.1"
+        "@co-hooks/util": "^1.0.2"
     },
     "engines": {
         "node": ">= 8.0.0",
