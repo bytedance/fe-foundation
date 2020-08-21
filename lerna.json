@@ -3,8 +3,8 @@
     "packages": [
         "packages/co-hooks/*",
         "packages/rc-hooks/*",
-        "packages/vc-hooks/*",
-        "packages/tools/*"
+        "packages/tools/*",
+        "packages/vc-hooks/*"
     ],
-    "version": "1.0.2"
+    "version": "1.0.3"
 }
