@@ -19,7 +19,7 @@ export interface IUniqueIdTransformerOptions {
 
     idName?: string;
 
-    removeUnuseIds?: boolean;
+    removeUnusedIds?: boolean;
 }
 
 export function UniqueIdTransformer(options: IUniqueIdTransformerOptions): ITransformPlugin {
@@ -28,7 +28,7 @@ export function UniqueIdTransformer(options: IUniqueIdTransformerOptions): ITran
         prefix = false,
         propName = 'props',
         idName = 'id',
-        removeUnuseIds = false
+        removeUnusedIds = false
     } = options;
 
     return {
@@ -59,7 +59,7 @@ export function UniqueIdTransformer(options: IUniqueIdTransformerOptions): ITran
                 .map(item => map[item].newId);
 
             // 把没用的Id去掉
-            if (removeUnuseIds && needRemoveIds && needRemoveIds.length) {
+            if (removeUnusedIds && needRemoveIds && needRemoveIds.length) {
                 info = transform(info, [RemoveIdTransformer({
                     propName: (prefix ? propName + '.' : '') + idName,
                     ids: needRemoveIds

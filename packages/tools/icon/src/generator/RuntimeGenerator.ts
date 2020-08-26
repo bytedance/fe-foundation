@@ -529,7 +529,7 @@ export abstract class RuntimeGenerator extends Generator {
     }
 
     protected processUtil(): void {
-        this.writeLine(`function guid()${this.useType ? `: ${this.getInterfaceName('config')}` : ''} {`);
+        this.writeLine(`function guid()${this.useType ? ': string' : ''} {`);
         this.indent(1);
         this.writeLine(
             `return '${this.prefix}-' + (((1 + Math.random()) * 0x100000000) | 0).toString(16).substring(1);`

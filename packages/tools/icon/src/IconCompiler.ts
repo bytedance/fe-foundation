@@ -244,7 +244,7 @@ export class IconCompiler {
             }
 
             // 删除多余的ID
-            plugins.push(UniqueIdTransformer({prefix: true, removeUnuseIds: true}));
+            plugins.push(UniqueIdTransformer({prefix: true, removeUnusedIds: true}));
 
             // 处理CSS动画
             if (style) {

@@ -1,6 +1,6 @@
 /**
  * @file ReactGenerator 输出React组件代码
-*/
+ */
 
 import {IGeneratorOptions} from '../Generator';
 import {ISvgAttr, ISvgElementInfo, ISvgInfo, ISvgInlineStyleAttr, SvgShapeAttr} from '../types';
@@ -119,7 +119,7 @@ export class JSXGenerator extends IconGenerator {
             imports.push(typeName);
 
             if (useHelper) {
-                imports.push(helperName);
+                imports.push(this.getTypeName('helper'));
             }
         }
 
@@ -177,7 +177,7 @@ export class JSXGenerator extends IconGenerator {
             this.write(helperName);
 
             if (useType) {
-                this.write(':');
+                this.write(': ');
                 this.write(this.getTypeName('helper'));
             }
 
