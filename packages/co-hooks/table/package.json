@@ -1,16 +1,16 @@
 {
     "name": "@co-hooks/table",
     "description": "",
-    "version": "1.0.2",
+    "version": "1.0.5",
     "main": "lib/index.js",
     "module": "es/index.js",
     "typings": "lib/index.d.ts",
     "keywords": [],
     "dependencies": {
-        "@co-hooks/cascader": "^1.0.2",
-        "@co-hooks/dom": "^1.0.2",
-        "@co-hooks/emitter": "^1.0.1",
-        "@co-hooks/util": "^1.0.2"
+        "@co-hooks/cascader": "^1.0.5",
+        "@co-hooks/dom": "^1.0.5",
+        "@co-hooks/emitter": "^1.0.5",
+        "@co-hooks/util": "^1.0.5"
     },
     "engines": {
         "node": ">= 8.0.0",
