@@ -9,7 +9,6 @@ import glob from 'glob';
 import gulp from 'gulp';
 import babel from 'gulp-babel';
 import ts from 'gulp-typescript';
-import uglify from 'gulp-uglify-es';
 import isPathCwd from 'is-path-cwd';
 import isPathInCwd from 'is-path-in-cwd';
 import merge from 'merge2';
@@ -96,7 +95,7 @@ gulp.task('build-js', () => {
             ]
         }));
 
-    return stream.pipe(uglify()).pipe(gulp.dest('dist/js'));
+    return stream.pipe(gulp.dest('dist/js'));
 });
 
 gulp.task('build-es', () => {
@@ -130,7 +129,7 @@ gulp.task('build-es', () => {
             ]
         }));
 
-    return stream.pipe(uglify()).pipe(gulp.dest('dist/es'));
+    return stream.pipe(gulp.dest('dist/es'));
 });
 
 gulp.task('del-dist', () => {

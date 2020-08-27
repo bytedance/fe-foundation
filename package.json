@@ -11,7 +11,9 @@
         "build:component": "gulp",
         "build:prepare": "npm run build:clean && npm run build:component",
         "publish:lerna": "lerna publish --skip-temp-tag --registry=https://registry.npmjs.org",
-        "publish:all": "npm run build:prepare && npm run publish:lerna && npm run build:clean"
+        "publish:lerna:force": "lerna publish --skip-temp-tag --force-publish=* --registry=https://registry.npmjs.org",
+        "publish:all": "npm run build:prepare && npm run publish:lerna && npm run build:clean",
+        "publish:all:force": "npm run build:prepare && npm run publish:lerna:force && npm run build:clean"
     },
     "devDependencies": {
         "@babel/core": "^7.10.4",

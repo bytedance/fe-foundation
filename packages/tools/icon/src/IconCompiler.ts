@@ -1,6 +1,6 @@
 /**
  * @file IconCompiler 图标编译工具
-*/
+ */
 import {compiler} from './compiler';
 import {IndexGenerator} from './generator/IndexGenerator';
 import {LessGenerator} from './generator/LessGenerator';
@@ -272,8 +272,8 @@ export class IconCompiler {
                 plugins.push(RemoveConditionTransformer({
                     tag: 'rect',
                     condition: info => info.attrs.some(item => (
-                        item.name === 'fill-opacity' && item.expression === '0.01')
-                    )
+                        item.name === 'fill-opacity' && item.expression === '0.01'
+                    ))
                 }));
             }
 
@@ -284,8 +284,8 @@ export class IconCompiler {
             }
 
             // React需要进行变量名升级
-            if (type === 'react') {
-                plugins.push(CamelTransformer({namespace: true}));
+            if (!isSvg) {
+                plugins.push(CamelTransformer({namespace: true, namespaceOnly: type === 'vue'}));
             }
 
             let generator: IconGenerator = type === 'vue'
