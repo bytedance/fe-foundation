@@ -1,6 +1,5 @@
-import React, {ChangeEvent, useCallback, useEffect, useRef, useState} from 'react';
+import React, {ChangeEvent, useCallback, useEffect, useRef, useState, Fragment} from 'react';
 import {classnames, guid} from '@co-hooks/util';
-import {usePrefixCls} from '@byte-design/config';
 import {IRcTriggerProps, useUpload} from '..';
 
 export function RcTrigger(props: IRcTriggerProps): JSX.Element | null {
@@ -8,13 +7,11 @@ export function RcTrigger(props: IRcTriggerProps): JSX.Element | null {
         children,
         disabled = false,
         multiple = false,
-        className = '',
         accept = '*/*'
     } = props;
     const [key, setKey] = useState(guid);
     const fileUpload = useUpload();
     const inputRef = useRef<HTMLInputElement>(null);
-    const cls = classnames(usePrefixCls('upload-trigger', {disabled}), className);
     const onClick = useCallback(() => {
         if (!disabled) {
             fileUpload.clickInput();
@@ -32,7 +29,7 @@ export function RcTrigger(props: IRcTriggerProps): JSX.Element | null {
     }, []);
     const _children = typeof children === 'function' ? children({disabled}) : children;
     return (
-        <span className={cls}>
+        <Fragment>
             <label onClick={onClick}>{ _children }</label>
             <input
                 type="file"
@@ -43,6 +40,6 @@ export function RcTrigger(props: IRcTriggerProps): JSX.Element | null {
                 multiple={multiple}
                 accept={accept}
             />
-        </span>
+        </Fragment>
     );
 }

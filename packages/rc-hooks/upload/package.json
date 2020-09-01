@@ -7,8 +7,7 @@
     "typings": "lib/index.d.ts",
     "keywords": [],
     "dependencies": {
-        "@co-hooks/util": "^1.0.0",
-        "@byte-design/config": "^1.0.0"
+        "@co-hooks/util": "^1.0.5"
     },
     "engines": {
         "node": ">= 8.0.0",
