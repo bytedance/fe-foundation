@@ -239,16 +239,17 @@ export function throttle<T extends FunctionAny>(fn: T, delay: number): (...args:
         if (remaining >= delay) {
 
             if (timer) {
-                window.clearTimeout(timer);
+                clearTimeout(timer);
             }
 
             fn.apply(null, currentArgs);
             previous = now;
         } else if (!timer) {
-            timer = window.setTimeout(() => {
+            const timerHandler: Function = () => {
                 fn.apply(null, currentArgs);
                 previous = +new Date();
-            }, delay - remaining);
+            };
+            timer = setTimeout(timerHandler, delay - remaining);
         }
     };
 }

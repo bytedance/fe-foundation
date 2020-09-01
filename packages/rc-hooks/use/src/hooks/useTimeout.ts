@@ -11,11 +11,12 @@ export function useTimeout(duration: number, handler?: VoidFunction): VoidFuncti
     const timerRef = useRef<number | null>(null);
 
     const setup = useCallback((timeout: number) => {
-
-        timerRef.current = window.setTimeout(() => {
+        const timerHandler: Function = () => {
             timerRef.current = null;
             handlerCallback();
-        }, timeout);
+        };
+
+        timerRef.current = setTimeout(timerHandler, timeout);
     }, []);
 
     const teardown = useCallback(() => {

@@ -1,9 +1,10 @@
 {
-  "lerna": "3.15.0",
-  "packages": [
-    "packages/co-hooks/*",
-    "packages/rc-hooks/*",
-    "packages/vc-hooks/*"
-  ],
-  "version": "1.0.0"
+    "lerna": "3.15.0",
+    "packages": [
+        "packages/co-hooks/*",
+        "packages/rc-hooks/*",
+        "packages/tools/*",
+        "packages/vc-hooks/*"
+    ],
+    "version": "1.0.5"
 }

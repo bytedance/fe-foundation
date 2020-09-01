@@ -2,7 +2,7 @@
  * @file Sortable 可排序组件，支持多容器
  */
 
-import {addClass, removeClass} from '@co-hooks/dom';
+import {addClass, isClient, removeClass} from '@co-hooks/dom';
 import {IDraggableEvent} from '@co-hooks/draggable';
 import {Emitter} from '@co-hooks/emitter';
 import {shallowMerge} from '@co-hooks/util';
@@ -36,7 +36,7 @@ const DEFAULT_OPTIONS: Required<ISortableOptions<unknown>> = {
     isVirtualDrag: () => false,
     createPlaceHolder: () => document.createElement('placeholder'),
     getContainerMode: () => null,
-    getDragRoot: () => document.body
+    getDragRoot: () => (isClient() ? document.body : null)
 };
 
 export interface ISortablePosition {

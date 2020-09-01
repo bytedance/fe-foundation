@@ -169,7 +169,7 @@ export class Animation<T = undefined> extends Emitter<IAnimationEvent<T>> {
         // Number.isFinite(maxCosts)
         if (this.timeout !== false) {
             const timeout = this.timeout !== true ? this.timeout : this.maxTimeCost * 1000 + 300;
-            meta.timeoutId = window.setTimeout(reset, timeout);
+            meta.timeoutId = setTimeout(reset as Function, timeout);
         }
 
         return reset;
@@ -222,7 +222,7 @@ export class Animation<T = undefined> extends Emitter<IAnimationEvent<T>> {
         // Number.isFinite(maxCosts)
         if (this.timeout !== false) {
             const timeout = this.timeout !== true ? this.timeout : this.maxTimeCost * 1000 + 300;
-            meta.timeoutId = window.setTimeout(reset, timeout);
+            meta.timeoutId = setTimeout(reset as Function, timeout);
         }
 
         return reset;

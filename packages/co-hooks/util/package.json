@@ -1,7 +1,7 @@
 {
     "name": "@co-hooks/util",
     "description": "util functions and types",
-    "version": "1.0.0",
+    "version": "1.0.5",
     "main": "lib/index.js",
     "module": "es/index.js",
     "typings": "lib/index.d.ts",

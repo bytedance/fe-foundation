@@ -4,6 +4,7 @@
 
 import {IRcPosition} from '@rc-hooks/dialog';
 import React, {ComponentType} from 'react';
+import {isClient} from '@co-hooks/dom';
 import {guid} from '@co-hooks/util';
 import {Emitter} from '@co-hooks/emitter';
 import ReactDOM from 'react-dom';
@@ -64,7 +65,7 @@ export class NotificationInstance<T> extends Emitter<INotificationInstanceEvents
     public notices: Array<INotice<T & INoticeBaseProps>> = [];
 
     // 渲染容器
-    public container: HTMLDivElement = document.createElement('div');
+    public container: HTMLDivElement | null = isClient() ? document.createElement('div') : null;
 
     // 当前是否已经装载
     private mounted: boolean = false;
@@ -102,6 +103,10 @@ export class NotificationInstance<T> extends Emitter<INotificationInstanceEvents
             animation,
             container
         } = this;
+
+        if (!container) {
+            return;
+        }
 
         if (document.body.lastChild !== container) {
             document.body.appendChild(container);
@@ -214,7 +219,7 @@ export class NotificationInstance<T> extends Emitter<INotificationInstanceEvents
 
     public dispose(): void {
 
-        if (this.mounted) {
+        if (this.mounted && this.container) {
             ReactDOM.unmountComponentAtNode(this.container);
             document.body.removeChild(this.container);
         }

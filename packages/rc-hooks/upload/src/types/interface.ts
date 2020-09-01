@@ -1,5 +1,7 @@
 import React from 'react';
-import {EventType, FileClass, FileStatus, FileType} from '..';
+import {FileClass} from '../lib/file';
+import {EventType} from './type';
+import {FileStatus, FileType} from './enum';
 
 interface IObject {
     [key: string]: string;
@@ -40,7 +42,7 @@ export interface IBaseFile {
     data?: unknown;
 }
 
-export interface IFileUploadChangeEvent<U=IBaseResType> {
+export interface IFileUploadChangeEvent<U = IBaseResType> {
     type: EventType;
     file: IBaseFile;
     index?: number;

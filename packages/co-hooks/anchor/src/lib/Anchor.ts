@@ -2,7 +2,7 @@
  * @file Anchor
  */
 import {Emitter} from '@co-hooks/emitter';
-import {getElementScroll} from '@co-hooks/dom';
+import {getElementScroll, isClient} from '@co-hooks/dom';
 import {AnchorItem} from './AnchorItem';
 
 export interface IAnchorEvent {
@@ -52,8 +52,8 @@ export class Anchor extends Emitter<IAnchorEvent> {
         }
     }
 
-    public getContainer(): HTMLElement {
-        return document.documentElement;
+    public getContainer(): HTMLElement | null {
+        return isClient() ? document.documentElement : null;
     }
 
     public getTargetOffset(): number {

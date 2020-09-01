@@ -35,7 +35,7 @@ export class HoverTrigger<T> extends Trigger<T> {
 
         this.hideAbort();
 
-        this.showTimer = window.setTimeout(() => {
+        const handler: Function = () => {
 
             this.showAbort();
 
@@ -44,7 +44,9 @@ export class HoverTrigger<T> extends Trigger<T> {
             }
 
             this.popper.showPopper(this.id);
-        }, this.showDelay);
+        };
+
+        this.showTimer = setTimeout(handler, this.showDelay);
     }
 
     public hidePopper(): void {
@@ -54,7 +56,7 @@ export class HoverTrigger<T> extends Trigger<T> {
 
         this.showAbort();
 
-        this.hideTimer = window.setTimeout(() => {
+        const handler: Function = () => {
             this.hideAbort();
             if (this.triggerGroup && this.id === this.triggerGroup.getActiveTrigger()) {
                 this.triggerGroup.cancelActiveTrigger(this.id);
@@ -62,7 +64,9 @@ export class HoverTrigger<T> extends Trigger<T> {
             } else {
                 this.popper.hidePopper(this.id);
             }
-        }, this.hideDelay);
+        };
+
+        this.hideTimer = setTimeout(handler, this.hideDelay);
     }
 
     private showAbort(): void {

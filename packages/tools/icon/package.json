@@ -1,0 +1,23 @@
+{
+    "name": "@icon-park/compiler",
+    "description": "图标编译工具",
+    "version": "1.0.5",
+    "main": "lib/index.js",
+    "module": "es/index.js",
+    "typings": "lib/index.d.ts",
+    "keywords": [],
+    "dependencies": {
+        "@types/css-tree": "^1.0.3",
+        "@types/tinycolor2": "^1.4.2",
+        "css-tree": "^1.0.0-alpha.39",
+        "tinycolor2": "^1.4.1",
+        "xml-js": "^1.6.11"
+    },
+    "engines": {
+        "node": ">= 8.0.0",
+        "npm": ">= 5.0.0"
+    },
+    "publishConfig": {
+        "access": "public"
+    }
+}
