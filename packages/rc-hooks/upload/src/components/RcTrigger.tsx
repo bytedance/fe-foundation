@@ -31,7 +31,7 @@ export function RcTrigger(props: IRcTriggerProps): JSX.Element | null {
     const _children = typeof children === 'function' ? children({disabled}) : children;
     return (
         <Fragment>
-            <label onClick={onClick}>{ _children }</label>
+            <label onClick={onClick}>{_children}</label>
             <input
                 type="file"
                 key={key}
