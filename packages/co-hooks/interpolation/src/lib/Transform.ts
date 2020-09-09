@@ -404,40 +404,67 @@ export class Transform {
             ast.params.forEach(item => scopeSymbols[item.raw] = true);
         }
 
-        Object.keys(ast).forEach(key => {
+        if (ast.type === AstNodeType.PROPERTY) {
 
-            if (key === 'type') {
-                return;
-            }
-
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            const value = (ast as any)[key];
-
-            if (Array.isArray(value)) {
-
-                value.forEach((item, i) => {
-                    this.transform(item, callback, {
-                        paths: paths.concat({
-                            node: ast,
-                            part: key,
-                            scopeSymbols,
-                            isArray: true,
-                            partIndex: i
-                        })
-                    });
-                });
-            } else if (typeof value === 'object') {
-                this.transform(value, callback, {
+            if (typeof ast.property !== 'string') {
+                this.transform(ast.property, callback, {
                     paths: paths.concat({
                         node: ast,
-                        part: key,
+                        part: 'property',
                         scopeSymbols,
                         isArray: false,
                         partIndex: 0
                     })
                 });
             }
-        });
+
+            this.transform(ast.expression, callback, {
+                paths: paths.concat({
+                    node: ast,
+                    part: 'expression',
+                    scopeSymbols,
+                    isArray: false,
+                    partIndex: 0
+                })
+            });
+
+        } else {
+            Object.keys(ast).forEach(key => {
+
+                if (key === 'type') {
+                    return;
+                }
+
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                const value = (ast as any)[key];
+
+                if (Array.isArray(value)) {
+
+                    value.forEach((item, i) => {
+                        this.transform(item, callback, {
+                            paths: paths.concat({
+                                node: ast,
+                                part: key,
+                                scopeSymbols,
+                                isArray: true,
+                                partIndex: i
+                            })
+                        });
+                    });
+                } else if (typeof value === 'object') {
+                    this.transform(value, callback, {
+                        paths: paths.concat({
+                            node: ast,
+                            part: key,
+                            scopeSymbols,
+                            isArray: false,
+                            partIndex: 0
+                        })
+                    });
+                }
+            });
+        }
+
 
         callback(ast, context);
     }

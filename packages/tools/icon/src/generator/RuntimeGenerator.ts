@@ -602,7 +602,7 @@ export abstract class RuntimeGenerator extends Generator {
                     if (color.type === 'color') {
 
                         if (fill.type !== 'color') {
-                            throw new Error('theme type and color type are diffent');
+                            throw new Error('theme type and color type are different');
                         }
 
                         this.write('colors.push(');
@@ -624,7 +624,7 @@ export abstract class RuntimeGenerator extends Generator {
                     } else {
 
                         if (fill.type !== 'hue') {
-                            throw new Error('theme type and color type are diffent');
+                            throw new Error('theme type and color type are different');
                         }
 
                         this.write('hsl.push(');

@@ -213,7 +213,7 @@ export interface IBindingNodeInfo {
 export interface IJsonInterpolationOptions<T> extends IInterpolationOptions {
     objectBinding?: {
         key: string;
-        process: (config: T, staticValue: unknown) => IInterpolationInfo;
+        process: (config: T, staticValue: unknown) => IInterpolationInfo | null;
     };
 }
 
@@ -416,7 +416,30 @@ class JsonBuilder<T> {
 
             const value = obj[key];
             const bindConfig = objectBinding[key];
-            const {watchers, ast} = binding.process(bindConfig, value);
+            const res = binding.process(bindConfig, value);
+
+            // 如果不需要替换，返回null
+            if (res == null) {
+
+                const bindPath = path.concat(key);
+                const value = obj[key];
+
+                const result: IObjectPropertyAstNode = {
+                    type: AstNodeType.OBJECT_PROPERTY,
+                    key: {
+                        type: AstNodeType.LITERAL,
+                        literal: TokenType.STRING,
+                        value: key,
+                        raw: JSON.stringify(key)
+                    },
+                    value: this.process(value, bindPath)
+                };
+
+                properties.push(result);
+                return
+            }
+
+            const {watchers, ast} = res;
 
             watchers.forEach(item => this.watchers[item] = true);
 
