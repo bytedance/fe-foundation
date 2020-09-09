@@ -1,7 +1,7 @@
 {
     "name": "@co-hooks/interpolation",
     "description": "javascript expression compiler",
-    "version": "1.0.5",
+    "version": "1.0.7",
     "main": "lib/index.js",
     "module": "es/index.js",
     "typings": "lib/index.d.ts",
