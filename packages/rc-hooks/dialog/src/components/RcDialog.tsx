@@ -11,7 +11,7 @@ import {useCombineRef} from '@rc-hooks/use';
 import {Property} from 'csstype';
 import React, {useCallback, useMemo, useRef, useState} from 'react';
 
-export type PositionProperty = Property.Position | 'absolute' | 'fixed' | 'relative' | 'static' | 'sticky';
+export type PositionProperty = Property.Position;
 
 export type IRcPositionHorizontal = 'left' | 'center' | 'right' | 'dock';
 
