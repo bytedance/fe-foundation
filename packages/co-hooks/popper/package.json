@@ -1,7 +1,7 @@
 {
     "name": "@co-hooks/popper",
     "description": "",
-    "version": "1.0.5",
+    "version": "1.0.8",
     "main": "lib/index.js",
     "module": "es/index.js",
     "typings": "lib/index.d.ts",

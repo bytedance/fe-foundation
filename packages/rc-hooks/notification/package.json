@@ -1,7 +1,7 @@
 {
     "name": "@rc-hooks/notification",
     "description": "",
-    "version": "1.0.5",
+    "version": "1.0.8",
     "main": "lib/index.js",
     "module": "es/index.js",
     "typings": "lib/index.d.ts",
@@ -11,7 +11,7 @@
         "@co-hooks/emitter": "^1.0.5",
         "@co-hooks/util": "^1.0.5",
         "@rc-hooks/animation": "^1.0.5",
-        "@rc-hooks/dialog": "^1.0.5",
+        "@rc-hooks/dialog": "^1.0.8",
         "@rc-hooks/use": "^1.0.5"
     },
     "engines": {

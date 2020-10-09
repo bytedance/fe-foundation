@@ -1,7 +1,7 @@
 {
     "name": "@rc-hooks/popper",
     "description": "",
-    "version": "1.0.5",
+    "version": "1.0.8",
     "main": "lib/index.js",
     "module": "es/index.js",
     "typings": "lib/index.d.ts",
@@ -9,7 +9,7 @@
     "dependencies": {
         "@co-hooks/dom": "^1.0.5",
         "@co-hooks/emitter": "^1.0.5",
-        "@co-hooks/popper": "^1.0.5",
+        "@co-hooks/popper": "^1.0.8",
         "@co-hooks/util": "^1.0.5",
         "@rc-hooks/dom": "^1.0.5",
         "@rc-hooks/portal": "^1.0.5",
