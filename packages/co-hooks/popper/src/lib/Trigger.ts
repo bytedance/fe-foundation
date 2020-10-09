@@ -36,7 +36,7 @@ export interface ITrigger<T> {
     dispose: () => void;
 }
 
-export type TriggerType = 'hover' | 'click' | 'focus' | 'manual';
+export type TriggerType = 'hover' | 'click' | 'focus' | 'manual' | 'contextmenu';
 
 export interface ITriggerEvent {
     'update-active': [boolean];

@@ -9,6 +9,7 @@ export * from './components/RcClickTrigger';
 export * from './components/RcFocusTrigger';
 export * from './components/RcManualTrigger';
 export * from './components/RcTriggerGroup';
+export * from './components/RcContextMenuTrigger';
 export * from './context/Popper';
 export * from './context/TriggerGroup';
 export * from './hooks/usePopper';
@@ -19,5 +20,6 @@ export * from './hooks/usePopover';
 export * from './hooks/useTrigger';
 export * from './hooks/useTriggerGroup';
 export * from './hooks/useManualTrigger';
+export * from './hooks/useContextMenuTrigger';
 
 export * from '@co-hooks/popper';

@@ -8,8 +8,10 @@ import {IUseCSSEnterLeaveOptions, useCSSEnterLeave} from '@rc-hooks/animation';
 import {RcMask} from '@rc-hooks/mask';
 import {RcPortal} from '@rc-hooks/portal';
 import {useCombineRef} from '@rc-hooks/use';
-import {PositionProperty} from 'csstype';
+import {Property} from 'csstype';
 import React, {useCallback, useMemo, useRef, useState} from 'react';
+
+export type PositionProperty = Property.Position | 'absolute' | 'fixed' | 'relative' | 'static' | 'sticky';
 
 export type IRcPositionHorizontal = 'left' | 'center' | 'right' | 'dock';
 
