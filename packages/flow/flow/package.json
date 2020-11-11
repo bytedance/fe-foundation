@@ -1,0 +1,31 @@
+{
+    "name": "@chief-editor/flow",
+    "description": "Old核心数据流",
+    "version": "0.5.0-before.127",
+    "main": "lib/index.js",
+    "module": "es/index.js",
+    "typings": "lib/index.d.ts",
+    "keywords": [
+        "render",
+        "flow",
+        "Old",
+        "expression"
+    ],
+    "dependencies": {
+        "@chief-editor/base": "^1.0.0",
+        "@co-hooks/interpolation": "^1.0.5",
+        "@co-hooks/mem-cache": "^1.0.5",
+        "@co-hooks/nest-watcher": "^1.0.5",
+        "@co-hooks/priority-queue": "^1.0.5",
+        "@co-hooks/util": "^1.0.5",
+        "@co-hooks/validate": "^1.0.5"
+    },
+    "engines": {
+        "node": ">= 8.0.0",
+        "npm": ">= 5.0.0"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "gitHead": "e9cf2d9e2e8194e1bc4a3ff1769c3b65ac1f22ef"
+}

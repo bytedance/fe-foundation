@@ -27,6 +27,9 @@
             ],
             "@vc-hooks/*": [
                 "./packages/vc-hooks/*"
+            ],
+            "@chief-editor/*": [
+                "./packages/flow/*"
             ]
         }
     }

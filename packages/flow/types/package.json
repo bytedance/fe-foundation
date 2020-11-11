@@ -1,0 +1,16 @@
+{
+    "name": "@chief-editor/types",
+    "description": "Types for ChiefEditor",
+    "version": "1.0.0",
+    "main": "lib/index.js",
+    "module": "es/index.js",
+    "typings": "lib/index.d.ts",
+    "keywords": [],
+    "engines": {
+        "node": ">= 8.0.0",
+        "npm": ">= 5.0.0"
+    },
+    "publishConfig": {
+        "access": "public"
+    }
+}
