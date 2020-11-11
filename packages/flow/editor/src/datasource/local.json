@@ -1,0 +1,69 @@
+{
+    "id": "de785207-a221-5bd9-05c0-b65707667624",
+    "board": {
+        "id": "root",
+        "type": "Stream",
+        "floatType": "none",
+        "bricks": [
+            {
+                "id": "abdda9ad-ca9c-a639-e2fc-e7f16a7ec663",
+                "type": "JSONEditor",
+                "info": {
+                    "id": "",
+                    "field": "data",
+                    "label": "背景色",
+                    "expandProps": {
+                        "props": {},
+                        "styles": {}
+                    }
+                },
+                "config": {
+                    "props": {
+                        "defaultValue": [],
+                        "placeholder": ""
+                    }
+                },
+                "styles": {
+                    "marginTop": 0,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "paddingTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "backgroundImage": "",
+                    "backgroundSize": "cover",
+                    "backgroundPosition": "center",
+                    "backgroundRepeat": "no-repeat",
+                    "borderRadius": "",
+                    "fontFamily": "",
+                    "fontSize": 12,
+                    "color": "rgba(255, 255, 255, 0.8)",
+                    "textDecoration": "none",
+                    "cursor": "",
+                    "lineHeight": "22px",
+                    "width": "100%",
+                    "textAlign": "center"
+                },
+                "layout": {
+                    "height": 24,
+                    "horizontal": "left",
+                    "vertical": "top",
+                    "width": ""
+                },
+                "events": {
+                    "eventList": []
+                },
+                "hooks": {
+                    "hookList": []
+                },
+                "watchers": {
+                    "watchers": []
+                }
+            }
+        ]
+    },
+    "width": 240,
+    "height": 800
+}

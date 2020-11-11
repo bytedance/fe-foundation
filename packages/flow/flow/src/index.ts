@@ -1,6 +1,5 @@
 /**
  * @file index
- * @author Yu Zong(liuxuanzy@qq.com)
  */
 
 // 导出组件模型

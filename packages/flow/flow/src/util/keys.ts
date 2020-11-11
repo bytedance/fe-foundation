@@ -1,6 +1,5 @@
 /**
  * @file keys 获取Path对应的Keys
- * @author Yu Zong(liuxuanzy@qq.com)
  */
 import {IBrickGlobal, INodeType, NodeType} from '@chief-editor/base';
 import {DomNode} from '@co-hooks/dom-node';

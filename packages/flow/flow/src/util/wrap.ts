@@ -1,6 +1,5 @@
 /**
  * @file index 插值处理
- * @author Yu Zong(liuxuanzy@qq.com)
  */
 
 import {BindType, IBindValue} from '@chief-editor/base';

@@ -5,11 +5,6 @@
     "main": "lib/index.js",
     "module": "es/index.js",
     "typings": "lib/index.d.ts",
-    "keywords": [
-        "editor",
-        "flow",
-        "expression"
-    ],
     "dependencies": {
         "@chief-editor/base": "^1.0.0",
         "@co-hooks/dom": "^1.0.5",
@@ -27,6 +22,5 @@
     },
     "publishConfig": {
         "access": "public"
-    },
-    "gitHead": "e9cf2d9e2e8194e1bc4a3ff1769c3b65ac1f22ef"
+    }
 }

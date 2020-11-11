@@ -1,0 +1,31 @@
+{
+    "name": "@chief-editor/preview",
+    "description": "FlowEditor Editor",
+    "version": "1.0.0",
+    "main": "lib/index.js",
+    "module": "es/index.js",
+    "typings": "lib/index.d.ts",
+    "dependencies": {
+        "@chief-editor/base": "1.0.0",
+        "@chief-editor/core": "1.0.0",
+        "@chief-editor/runtime": "1.0.0"
+    },
+    "peerDependencies": {
+        "@co-hooks/dom": "*",
+        "@co-hooks/dom-node": "*",
+        "@co-hooks/util": "*",
+        "@rc-hooks/drag": "*",
+        "@rc-hooks/draggable": "*",
+        "@rc-hooks/sortable": "*",
+        "@rc-hooks/use": "*",
+        "react": "^16.9.0",
+        "react-dom": "^16.9.0"
+    },
+    "engines": {
+        "node": ">= 8.0.0",
+        "npm": ">= 5.0.0"
+    },
+    "publishConfig": {
+        "access": "public"
+    }
+}
