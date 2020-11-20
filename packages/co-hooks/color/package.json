@@ -1,7 +1,7 @@
 {
     "name": "@co-hooks/color",
     "description": "color panel tools",
-    "version": "1.0.5",
+    "version": "1.0.9",
     "main": "lib/index.js",
     "module": "es/index.js",
     "typings": "lib/index.d.ts",
