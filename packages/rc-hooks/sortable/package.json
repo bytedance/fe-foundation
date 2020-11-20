@@ -1,18 +1,18 @@
 {
     "name": "@rc-hooks/sortable",
     "description": "",
-    "version": "1.0.5",
+    "version": "1.0.10",
     "main": "lib/index.js",
     "module": "es/index.js",
     "typings": "lib/index.d.ts",
     "keywords": [],
     "dependencies": {
-        "@co-hooks/emitter": "^1.0.5",
-        "@co-hooks/sortable": "^1.0.5",
-        "@co-hooks/util": "^1.0.5",
-        "@rc-hooks/dom": "^1.0.5",
-        "@rc-hooks/draggable": "^1.0.5",
-        "@rc-hooks/use": "^1.0.5"
+        "@co-hooks/emitter": "^1.0.10",
+        "@co-hooks/sortable": "^1.0.10",
+        "@co-hooks/util": "^1.0.10",
+        "@rc-hooks/dom": "^1.0.10",
+        "@rc-hooks/draggable": "^1.0.10",
+        "@rc-hooks/use": "^1.0.10"
     },
     "engines": {
         "node": ">= 8.0.0",

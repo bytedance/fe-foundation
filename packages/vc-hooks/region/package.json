@@ -1,14 +1,14 @@
 {
     "name": "@vc-hooks/region",
     "description": "区域钩子",
-    "version": "1.0.5",
+    "version": "1.0.10",
     "main": "lib/index.js",
     "module": "es/index.js",
     "typings": "lib/index.d.ts",
     "keywords": [],
     "dependencies": {
-        "@co-hooks/region": "^1.0.5",
-        "@vc-hooks/drag": "^1.0.5"
+        "@co-hooks/region": "^1.0.10",
+        "@vc-hooks/drag": "^1.0.10"
     },
     "engines": {
         "node": ">= 8.0.0",
