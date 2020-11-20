@@ -2,7 +2,7 @@
  * @file Color 颜色转化和处理
  */
 
-import {HSL2RGB, IHSL, IHSLA, IRGB, IRGBA, ISL, RGB2HEX, RGB2HSL, RGBA2HEX, string2RGB} from '../util';
+import {HSL2RGB, IHSL, IHSLA, IRGB, IRGBA, ISL, RGB2HEX, RGB2HSL, RGBA2HEX, string2RGB, parseColorStr} from '../util';
 
 export interface IColorInfoOptions {
     hasAlpha?: boolean;
@@ -19,13 +19,20 @@ export class Color {
     // 字符串 -> color对象
     public static fromString(str: string, options: IColorInfoOptions): Color {
 
-        const color = string2RGB(str);
+        // const color = string2RGB(str);
+        const color = parseColorStr(str);
 
         if (color == null) {
             return Color.fromEmpty(options);
         }
 
-        return new Color({a: color.a, ...RGB2HSL(color)}, options);
+        const [data, type] = color;
+
+        if (type === 'rgb') {
+            return new Color({a: data.a, ...RGB2HSL(data as IRGBA)}, options);
+        }
+
+        return new Color(data as IHSLA, options);
     }
 
     // rgb -> color对象
@@ -223,6 +230,16 @@ export class Color {
         const hsl = this.getHSL();
         const a = (this.a / 100).toFixed(2);
         return `hsla(${hsl.h.toFixed(0)}, ${hsl.s.toFixed(0)}%, ${hsl.l.toFixed(0)}%, ${a})`;
+    }
+
+    public toHSLAPrecision(): string {
+        const hsl = this.getHSL();
+        const a = String(this.a / 100);
+        return 'hsla('
+            .concat(String(hsl.h), ', ')
+            .concat(String(hsl.s), '%, ')
+            .concat(String(hsl.l), '%, ')
+            .concat(a, ')');
     }
 
     public toString(): string {

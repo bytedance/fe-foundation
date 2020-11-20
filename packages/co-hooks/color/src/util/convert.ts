@@ -2,7 +2,7 @@
  * @file hex ,#333 #999999
  */
 import {padding} from '@co-hooks/util';
-import {IHSL, IRGB, IRGBA} from './types';
+import {IHSL, IHSLA, IRGB, IRGBA} from './types';
 
 // [0,n]->[0,1]
 export function toPercent(v: number, n: number = 255): number {
@@ -101,6 +101,48 @@ export function string2RGB(str: string): IRGBA | null {
             b: content[2] || 0,
             a
         };
+    }
+
+    return null;
+}
+
+// support:
+// #000(short)、#000000、#0000、#00000000
+// rgb(29,2,210)
+// rgba(20,203,20,0.1)
+// hsl(100,99,88)
+// hsla(230,38%,39%,0.4)
+export function parseColorStr(str: string): [IRGBA | IHSLA, 'rgb' | 'hsl'] | null {
+
+    str = str.trim().toLowerCase();
+
+    if (str.charAt(0) === '#') {
+        const val = HEX2RGBA(str.slice(1));
+        return val ? [val, 'rgb'] : val;
+    }
+
+    // 处理hsla等，不是太严格，不过可以用
+    if (/^(hsla?|rgba?)\s*\((.+)\)\s*$/.test(str)) {
+        const hasAlpha = RegExp.$1.length > 3;
+        const type = hasAlpha ? RegExp.$1.slice(0, -1) : RegExp.$1;
+        const content = RegExp.$2.trim().split(/,\s*/g).map(item => parseFloat(item.trim()));
+        const a = hasAlpha && content[3] != null && isFinite(content[3]) ? content[3] * 100 : 100;
+
+        if (type === 'hsl') {
+            return [{
+                h: content[0] || 0,
+                s: content[1] || 0,
+                l: content[2] || 0,
+                a
+            }, 'hsl'];
+        }
+
+        return [{
+            r: content[0] || 0,
+            g: content[1] || 0,
+            b: content[2] || 0,
+            a
+        }, 'rgb'];
     }
 
     return null;
